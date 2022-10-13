@@ -1018,3 +1018,190 @@ Identify and stop the process that's listening on port 8080 or configure this ap
 2022-10-13 14:42:11.629  INFO 4424 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
 2022-10-13 14:42:11.631  INFO 4424 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
 2022-10-13 14:42:11.632  INFO 4424 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2022-10-13 14:47:12.057  INFO 4553 --- [main] c.v.y.YsellbToHerokuApplication          : Starting YsellbToHerokuApplication using Java 17.0.2 on MacBook-Air-Vasyl.local with PID 4553 (/Users/vasylkorol/IdeaProjects/ysellb-to-heroku/target/classes started by vasylkorol in /Users/vasylkorol/IdeaProjects/ysellb-to-heroku)
+2022-10-13 14:47:12.058  INFO 4553 --- [main] c.v.y.YsellbToHerokuApplication          : No active profile set, falling back to 1 default profile: "default"
+2022-10-13 14:47:12.322  INFO 4553 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-10-13 14:47:12.354  INFO 4553 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 29 ms. Found 7 JPA repository interfaces.
+2022-10-13 14:47:12.623  INFO 4553 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2022-10-13 14:47:12.626  INFO 4553 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-10-13 14:47:12.626  INFO 4553 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.65]
+2022-10-13 14:47:12.658  INFO 4553 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-10-13 14:47:12.658  INFO 4553 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 572 ms
+2022-10-13 14:47:12.721  INFO 4553 --- [main] o.f.c.internal.license.VersionPrinter    : Flyway Community Edition 9.4.0 by Redgate
+2022-10-13 14:47:12.721  INFO 4553 --- [main] o.f.c.internal.license.VersionPrinter    : See what's new here: https://flywaydb.org/documentation/learnmore/releaseNotes#9.4.0
+2022-10-13 14:47:12.721  INFO 4553 --- [main] o.f.c.internal.license.VersionPrinter    : 
+2022-10-13 14:47:12.723  INFO 4553 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2022-10-13 14:47:12.792  INFO 4553 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2022-10-13 14:47:12.801  INFO 4553 --- [main] o.f.c.i.database.base.BaseDatabaseType   : Database: jdbc:postgresql://localhost:5433/postgres (PostgreSQL 14.1)
+2022-10-13 14:47:12.823  INFO 4553 --- [main] o.f.core.internal.command.DbValidate     : Successfully validated 0 migrations (execution time 00:00.007s)
+2022-10-13 14:47:12.823  WARN 4553 --- [main] o.f.core.internal.command.DbValidate     : No migrations found. Are your locations set up correctly?
+2022-10-13 14:47:12.842  INFO 4553 --- [main] o.f.c.i.s.JdbcTableSchemaHistory         : Creating Schema History table "public"."flyway_schema_history" ...
+2022-10-13 14:47:12.905  INFO 4553 --- [main] o.f.core.internal.command.DbMigrate      : Current version of schema "public": << Empty Schema >>
+2022-10-13 14:47:12.907  INFO 4553 --- [main] o.f.core.internal.command.DbMigrate      : Schema "public" is up to date. No migration necessary.
+2022-10-13 14:47:12.944  INFO 4553 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-10-13 14:47:12.958  INFO 4553 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.6.11.Final
+2022-10-13 14:47:13.011  INFO 4553 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2022-10-13 14:47:13.040  INFO 4553 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.PostgreSQL10Dialect
+2022-10-13 14:47:13.292 ERROR 4553 --- [main] j.LocalContainerEntityManagerFactoryBean : Failed to initialize JPA EntityManagerFactory: [PersistenceUnit: default] Unable to build Hibernate SessionFactory; nested exception is org.hibernate.tool.schema.spi.SchemaManagementException: Schema-validation: missing table [avatar]
+2022-10-13 14:47:13.293  WARN 4553 --- [main] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'entityManagerFactory' defined in class path resource [org/springframework/boot/autoconfigure/orm/jpa/HibernateJpaConfiguration.class]: Invocation of init method failed; nested exception is javax.persistence.PersistenceException: [PersistenceUnit: default] Unable to build Hibernate SessionFactory; nested exception is org.hibernate.tool.schema.spi.SchemaManagementException: Schema-validation: missing table [avatar]
+2022-10-13 14:47:13.293  INFO 4553 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2022-10-13 14:47:13.297  INFO 4553 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2022-10-13 14:47:13.298  INFO 4553 --- [main] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2022-10-13 14:47:13.303  INFO 4553 --- [main] ConditionEvaluationReportLoggingListener : 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+2022-10-13 14:47:13.312 ERROR 4553 --- [main] o.s.boot.SpringApplication               : Application run failed
+
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'entityManagerFactory' defined in class path resource [org/springframework/boot/autoconfigure/orm/jpa/HibernateJpaConfiguration.class]: Invocation of init method failed; nested exception is javax.persistence.PersistenceException: [PersistenceUnit: default] Unable to build Hibernate SessionFactory; nested exception is org.hibernate.tool.schema.spi.SchemaManagementException: Schema-validation: missing table [avatar]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1804) ~[spring-beans-5.3.23.jar:5.3.23]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:620) ~[spring-beans-5.3.23.jar:5.3.23]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:542) ~[spring-beans-5.3.23.jar:5.3.23]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:335) ~[spring-beans-5.3.23.jar:5.3.23]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234) ~[spring-beans-5.3.23.jar:5.3.23]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:333) ~[spring-beans-5.3.23.jar:5.3.23]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:208) ~[spring-beans-5.3.23.jar:5.3.23]
+	at org.springframework.context.support.AbstractApplicationContext.getBean(AbstractApplicationContext.java:1154) ~[spring-context-5.3.23.jar:5.3.23]
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:908) ~[spring-context-5.3.23.jar:5.3.23]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:583) ~[spring-context-5.3.23.jar:5.3.23]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:147) ~[spring-boot-2.7.4.jar:2.7.4]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:734) ~[spring-boot-2.7.4.jar:2.7.4]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:408) ~[spring-boot-2.7.4.jar:2.7.4]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:308) ~[spring-boot-2.7.4.jar:2.7.4]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1306) ~[spring-boot-2.7.4.jar:2.7.4]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1295) ~[spring-boot-2.7.4.jar:2.7.4]
+	at com.vask.ysellbtoheroku.YsellbToHerokuApplication.main(YsellbToHerokuApplication.java:10) ~[classes/:na]
+Caused by: javax.persistence.PersistenceException: [PersistenceUnit: default] Unable to build Hibernate SessionFactory; nested exception is org.hibernate.tool.schema.spi.SchemaManagementException: Schema-validation: missing table [avatar]
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.buildNativeEntityManagerFactory(AbstractEntityManagerFactoryBean.java:421) ~[spring-orm-5.3.23.jar:5.3.23]
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.afterPropertiesSet(AbstractEntityManagerFactoryBean.java:396) ~[spring-orm-5.3.23.jar:5.3.23]
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.afterPropertiesSet(LocalContainerEntityManagerFactoryBean.java:341) ~[spring-orm-5.3.23.jar:5.3.23]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1863) ~[spring-beans-5.3.23.jar:5.3.23]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1800) ~[spring-beans-5.3.23.jar:5.3.23]
+	... 16 common frames omitted
+Caused by: org.hibernate.tool.schema.spi.SchemaManagementException: Schema-validation: missing table [avatar]
+	at org.hibernate.tool.schema.internal.AbstractSchemaValidator.validateTable(AbstractSchemaValidator.java:129) ~[hibernate-core-5.6.11.Final.jar:5.6.11.Final]
+	at org.hibernate.tool.schema.internal.GroupedSchemaValidatorImpl.validateTables(GroupedSchemaValidatorImpl.java:42) ~[hibernate-core-5.6.11.Final.jar:5.6.11.Final]
+	at org.hibernate.tool.schema.internal.AbstractSchemaValidator.performValidation(AbstractSchemaValidator.java:97) ~[hibernate-core-5.6.11.Final.jar:5.6.11.Final]
+	at org.hibernate.tool.schema.internal.AbstractSchemaValidator.doValidation(AbstractSchemaValidator.java:76) ~[hibernate-core-5.6.11.Final.jar:5.6.11.Final]
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.performDatabaseAction(SchemaManagementToolCoordinator.java:204) ~[hibernate-core-5.6.11.Final.jar:5.6.11.Final]
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.process(SchemaManagementToolCoordinator.java:85) ~[hibernate-core-5.6.11.Final.jar:5.6.11.Final]
+	at org.hibernate.internal.SessionFactoryImpl.<init>(SessionFactoryImpl.java:335) ~[hibernate-core-5.6.11.Final.jar:5.6.11.Final]
+	at org.hibernate.boot.internal.SessionFactoryBuilderImpl.build(SessionFactoryBuilderImpl.java:471) ~[hibernate-core-5.6.11.Final.jar:5.6.11.Final]
+	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.build(EntityManagerFactoryBuilderImpl.java:1498) ~[hibernate-core-5.6.11.Final.jar:5.6.11.Final]
+	at org.springframework.orm.jpa.vendor.SpringHibernateJpaPersistenceProvider.createContainerEntityManagerFactory(SpringHibernateJpaPersistenceProvider.java:58) ~[spring-orm-5.3.23.jar:5.3.23]
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.createNativeEntityManagerFactory(LocalContainerEntityManagerFactoryBean.java:365) ~[spring-orm-5.3.23.jar:5.3.23]
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.buildNativeEntityManagerFactory(AbstractEntityManagerFactoryBean.java:409) ~[spring-orm-5.3.23.jar:5.3.23]
+	... 20 common frames omitted
+
+2022-10-13 14:47:51.481  INFO 4565 --- [main] c.v.y.YsellbToHerokuApplication          : Starting YsellbToHerokuApplication using Java 17.0.2 on MacBook-Air-Vasyl.local with PID 4565 (/Users/vasylkorol/IdeaProjects/ysellb-to-heroku/target/classes started by vasylkorol in /Users/vasylkorol/IdeaProjects/ysellb-to-heroku)
+2022-10-13 14:47:51.484  INFO 4565 --- [main] c.v.y.YsellbToHerokuApplication          : No active profile set, falling back to 1 default profile: "default"
+2022-10-13 14:47:51.762  INFO 4565 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-10-13 14:47:51.791  INFO 4565 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 26 ms. Found 7 JPA repository interfaces.
+2022-10-13 14:47:52.036  INFO 4565 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2022-10-13 14:47:52.038  INFO 4565 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-10-13 14:47:52.039  INFO 4565 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.65]
+2022-10-13 14:47:52.067  INFO 4565 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-10-13 14:47:52.067  INFO 4565 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 553 ms
+2022-10-13 14:47:52.133  INFO 4565 --- [main] o.f.c.internal.license.VersionPrinter    : Flyway Community Edition 9.4.0 by Redgate
+2022-10-13 14:47:52.134  INFO 4565 --- [main] o.f.c.internal.license.VersionPrinter    : See what's new here: https://flywaydb.org/documentation/learnmore/releaseNotes#9.4.0
+2022-10-13 14:47:52.134  INFO 4565 --- [main] o.f.c.internal.license.VersionPrinter    : 
+2022-10-13 14:47:52.136  INFO 4565 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2022-10-13 14:47:52.208  INFO 4565 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2022-10-13 14:47:52.219  INFO 4565 --- [main] o.f.c.i.database.base.BaseDatabaseType   : Database: jdbc:postgresql://localhost:5433/postgres (PostgreSQL 14.1)
+2022-10-13 14:47:52.250  INFO 4565 --- [main] o.f.core.internal.command.DbValidate     : Successfully validated 1 migration (execution time 00:00.012s)
+2022-10-13 14:47:52.291  INFO 4565 --- [main] o.f.core.internal.command.DbMigrate      : Current version of schema "public": << Empty Schema >>
+2022-10-13 14:47:52.306  INFO 4565 --- [main] o.f.core.internal.command.DbMigrate      : Migrating schema "public" to version "1 - init db"
+2022-10-13 14:47:52.373  INFO 4565 --- [main] o.f.core.internal.command.DbMigrate      : Successfully applied 1 migration to schema "public", now at version v1 (execution time 00:00.088s)
+2022-10-13 14:47:52.407  INFO 4565 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-10-13 14:47:52.420  INFO 4565 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.6.11.Final
+2022-10-13 14:47:52.472  INFO 4565 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2022-10-13 14:47:52.500  INFO 4565 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.PostgreSQL10Dialect
+2022-10-13 14:47:52.740  INFO 4565 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-10-13 14:47:52.743  INFO 4565 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-10-13 14:47:53.110  INFO 4565 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@4cd9ee2c, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@1631dbbc, org.springframework.security.web.context.SecurityContextPersistenceFilter@464abed, org.springframework.security.web.header.HeaderWriterFilter@43b7bd5a, org.springframework.security.web.authentication.logout.LogoutFilter@53335328, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@3fc4038f, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@5c46a957, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@13cae908, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@3b663112, org.springframework.security.web.session.SessionManagementFilter@6c4e486e, org.springframework.security.web.access.ExceptionTranslationFilter@1cd2e348, org.springframework.security.web.access.intercept.AuthorizationFilter@43edd2ea]
+2022-10-13 14:47:53.141  WARN 4565 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2022-10-13 14:47:54.703  WARN 4565 --- [main] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.context.ApplicationContextException: Failed to start bean 'webServerStartStop'; nested exception is org.springframework.boot.web.server.PortInUseException: Port 8080 is already in use
+2022-10-13 14:47:54.707  INFO 4565 --- [main] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2022-10-13 14:47:54.708  INFO 4565 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2022-10-13 14:47:54.709  INFO 4565 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2022-10-13 14:47:54.710  INFO 4565 --- [main] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2022-10-13 14:47:54.717  INFO 4565 --- [main] ConditionEvaluationReportLoggingListener : 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+2022-10-13 14:47:54.724 ERROR 4565 --- [main] o.s.b.d.LoggingFailureAnalysisReporter   : 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Web server failed to start. Port 8080 was already in use.
+
+Action:
+
+Identify and stop the process that's listening on port 8080 or configure this application to listen on another port.
+
+2022-10-13 14:48:04.333  INFO 4572 --- [main] c.v.y.YsellbToHerokuApplication          : Starting YsellbToHerokuApplication using Java 17.0.2 on MacBook-Air-Vasyl.local with PID 4572 (/Users/vasylkorol/IdeaProjects/ysellb-to-heroku/target/classes started by vasylkorol in /Users/vasylkorol/IdeaProjects/ysellb-to-heroku)
+2022-10-13 14:48:04.334  INFO 4572 --- [main] c.v.y.YsellbToHerokuApplication          : No active profile set, falling back to 1 default profile: "default"
+2022-10-13 14:48:04.569  INFO 4572 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-10-13 14:48:04.597  INFO 4572 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 26 ms. Found 7 JPA repository interfaces.
+2022-10-13 14:48:04.834  INFO 4572 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8082 (http)
+2022-10-13 14:48:04.836  INFO 4572 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-10-13 14:48:04.837  INFO 4572 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.65]
+2022-10-13 14:48:04.864  INFO 4572 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-10-13 14:48:04.865  INFO 4572 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 504 ms
+2022-10-13 14:48:04.924  INFO 4572 --- [main] o.f.c.internal.license.VersionPrinter    : Flyway Community Edition 9.4.0 by Redgate
+2022-10-13 14:48:04.925  INFO 4572 --- [main] o.f.c.internal.license.VersionPrinter    : See what's new here: https://flywaydb.org/documentation/learnmore/releaseNotes#9.4.0
+2022-10-13 14:48:04.925  INFO 4572 --- [main] o.f.c.internal.license.VersionPrinter    : 
+2022-10-13 14:48:04.927  INFO 4572 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2022-10-13 14:48:05.003  INFO 4572 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2022-10-13 14:48:05.012  INFO 4572 --- [main] o.f.c.i.database.base.BaseDatabaseType   : Database: jdbc:postgresql://localhost:5433/postgres (PostgreSQL 14.1)
+2022-10-13 14:48:05.040  INFO 4572 --- [main] o.f.core.internal.command.DbValidate     : Successfully validated 1 migration (execution time 00:00.013s)
+2022-10-13 14:48:05.077  INFO 4572 --- [main] o.f.core.internal.command.DbMigrate      : Current version of schema "public": 1
+2022-10-13 14:48:05.078  INFO 4572 --- [main] o.f.core.internal.command.DbMigrate      : Schema "public" is up to date. No migration necessary.
+2022-10-13 14:48:05.112  INFO 4572 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-10-13 14:48:05.124  INFO 4572 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.6.11.Final
+2022-10-13 14:48:05.172  INFO 4572 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2022-10-13 14:48:05.199  INFO 4572 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.PostgreSQL10Dialect
+2022-10-13 14:48:05.436  INFO 4572 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-10-13 14:48:05.439  INFO 4572 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-10-13 14:48:05.815  INFO 4572 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@73b10975, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@6318ff9, org.springframework.security.web.context.SecurityContextPersistenceFilter@3fc14dc0, org.springframework.security.web.header.HeaderWriterFilter@6b529d42, org.springframework.security.web.authentication.logout.LogoutFilter@7bf16972, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@3d605657, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@78c23ade, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@3cd6d147, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@69b80603, org.springframework.security.web.session.SessionManagementFilter@790f4933, org.springframework.security.web.access.ExceptionTranslationFilter@3d42b756, org.springframework.security.web.access.intercept.AuthorizationFilter@2cd877d3]
+2022-10-13 14:48:05.843  WARN 4572 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2022-10-13 14:48:07.188  INFO 4572 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8082 (http) with context path ''
+2022-10-13 14:48:07.195  INFO 4572 --- [main] c.v.y.YsellbToHerokuApplication          : Started YsellbToHerokuApplication in 3.013 seconds (JVM running for 3.225)
+2022-10-13 14:48:12.868  INFO 4572 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2022-10-13 14:48:12.869  INFO 4572 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2022-10-13 14:48:12.870  INFO 4572 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2022-10-13 14:50:06.276  INFO 4582 --- [main] c.v.y.YsellbToHerokuApplication          : Starting YsellbToHerokuApplication using Java 17.0.2 on MacBook-Air-Vasyl.local with PID 4582 (/Users/vasylkorol/IdeaProjects/ysellb-to-heroku/target/classes started by vasylkorol in /Users/vasylkorol/IdeaProjects/ysellb-to-heroku)
+2022-10-13 14:50:06.277  INFO 4582 --- [main] c.v.y.YsellbToHerokuApplication          : No active profile set, falling back to 1 default profile: "default"
+2022-10-13 14:50:06.508  INFO 4582 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-10-13 14:50:06.538  INFO 4582 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 26 ms. Found 7 JPA repository interfaces.
+2022-10-13 14:50:06.781  INFO 4582 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8082 (http)
+2022-10-13 14:50:06.784  INFO 4582 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-10-13 14:50:06.784  INFO 4582 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.65]
+2022-10-13 14:50:06.812  INFO 4582 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-10-13 14:50:06.812  INFO 4582 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 517 ms
+2022-10-13 14:50:06.877  INFO 4582 --- [main] o.f.c.internal.license.VersionPrinter    : Flyway Community Edition 9.4.0 by Redgate
+2022-10-13 14:50:06.877  INFO 4582 --- [main] o.f.c.internal.license.VersionPrinter    : See what's new here: https://flywaydb.org/documentation/learnmore/releaseNotes#9.4.0
+2022-10-13 14:50:06.877  INFO 4582 --- [main] o.f.c.internal.license.VersionPrinter    : 
+2022-10-13 14:50:06.880  INFO 4582 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2022-10-13 14:50:06.953  INFO 4582 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2022-10-13 14:50:06.962  INFO 4582 --- [main] o.f.c.i.database.base.BaseDatabaseType   : Database: jdbc:postgresql://localhost:5433/postgres (PostgreSQL 14.1)
+2022-10-13 14:50:06.988  INFO 4582 --- [main] o.f.core.internal.command.DbValidate     : Successfully validated 1 migration (execution time 00:00.009s)
+2022-10-13 14:50:07.005  INFO 4582 --- [main] o.f.c.i.s.JdbcTableSchemaHistory         : Creating Schema History table "public"."flyway_schema_history" ...
+2022-10-13 14:50:07.057  INFO 4582 --- [main] o.f.core.internal.command.DbMigrate      : Current version of schema "public": << Empty Schema >>
+2022-10-13 14:50:07.066  INFO 4582 --- [main] o.f.core.internal.command.DbMigrate      : Migrating schema "public" to version "1 - init db"
+2022-10-13 14:50:07.136  INFO 4582 --- [main] o.f.core.internal.command.DbMigrate      : Successfully applied 1 migration to schema "public", now at version v1 (execution time 00:00.085s)
+2022-10-13 14:50:07.170  INFO 4582 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-10-13 14:50:07.183  INFO 4582 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.6.11.Final
+2022-10-13 14:50:07.236  INFO 4582 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2022-10-13 14:50:07.264  INFO 4582 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.PostgreSQL10Dialect
+2022-10-13 14:50:07.512  INFO 4582 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-10-13 14:50:07.514  INFO 4582 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-10-13 14:50:07.894  INFO 4582 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@7683ea43, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@15a41088, org.springframework.security.web.context.SecurityContextPersistenceFilter@f7b7720, org.springframework.security.web.header.HeaderWriterFilter@36e98434, org.springframework.security.web.authentication.logout.LogoutFilter@41433530, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@6a9ac8b, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@1cd2e348, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@56d3af4d, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@18356951, org.springframework.security.web.session.SessionManagementFilter@77acc95a, org.springframework.security.web.access.ExceptionTranslationFilter@18adc20a, org.springframework.security.web.access.intercept.AuthorizationFilter@820b78a]
+2022-10-13 14:50:07.927  WARN 4582 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2022-10-13 14:50:09.611  INFO 4582 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8082 (http) with context path ''
+2022-10-13 14:50:09.619  INFO 4582 --- [main] c.v.y.YsellbToHerokuApplication          : Started YsellbToHerokuApplication in 3.469 seconds (JVM running for 3.887)
+2022-10-13 14:50:13.597  INFO 4582 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2022-10-13 14:50:13.599  INFO 4582 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2022-10-13 14:50:13.600  INFO 4582 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.

@@ -32,7 +32,7 @@ spring:
   jpa:
     hibernate:
 
-      ddl-auto: update
+      ddl-auto: validate
     show-sql: true
   flyway:
     baseline-on-migrate: true
@@ -42,6 +42,6 @@ logging:
     path: /
     name: ysellb.log
 server:
-  port: 8080
+  port: 8082
 
 
