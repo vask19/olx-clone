@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" media="all"
+          href="/menu.css" th:href="@{/menu.css}" />
+    <link rel="stylesheet" type="text/css" media="all"
+          href="/all_products_page.css" th:href="@{/all_products_page.css}" />
+
+    <title>home</title>
+
+
+</head>
+<body>
+<div th:insert="~{fragments/menu :: #nav-menu}"></div>
+
+<div class="container">
+    <div class="page">
+        <h1>Offers</h1>
+        <div class="main">
+            <div class="main__card">
+                <img src="" alt="">
+                <div class="main__card__description">lorem</div>
+                <div class="main__card__location">Warszawa</div>
+                <div class="main__card__price">
+                    3000
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+
+
+
+
+
+
+<script>
+    function showCard(data){
+        const cards=document.querySelector(".main");
+        data.forEach((el)=>{
+            const cardEl=document.createElement("div");
+            cardEl.innerHTML=`<div class="main__card">
+                <img src="" alt="">
+                <div class="main__card__description">lorem</div>
+                <div class="main__card__location">Warszawa</div>
+                <div class="main__card__price">300</div>`
+            cards.appendChild(cardEl);
+        })
+    }
+    showCard();
+</script>
+
+<script type="text/javascript" th:src="@{/js/modalWindow.js}"></script>
+
+</body>
+</html>

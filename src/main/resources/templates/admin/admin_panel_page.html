@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin panel</title>
+</head>
+<body>
+<div th:insert="~{fragments/menu :: #nav-menu}"></div>
+<link rel="stylesheet" type="text/css" media="all"
+      href="/menu.css" th:href="@{/menu.css}" />
+
+<form th:method="get" th:action="@{/api/admin/users}">
+    <button type="submit">Show users</button>
+</form>
+
+
+<script type="text/javascript" th:src="@{/js/modalWindow.js}"></script>
+
+</body>
+</html>

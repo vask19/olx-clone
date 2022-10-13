@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Bucket</title>
+</head>
+<body>
+<div th:insert="~{fragments/menu :: #nav-menu}"></div>
+<link rel="stylesheet" type="text/css" media="all"
+      href="/menu.css" th:href="@{/menu.css}" />
+
+<div th:each="product : ${productDtoList}">
+    <p th:text="${product.getName()}">Name</p>
+    <p th:text="${product.getPrice()}" >price</p>
+    <a th:href="@{/api/products/{id}(id=${product.getId()})}"><img th:src="@{/api/images/{id}(id=${product.getImageIds().get(0)})}" th:high="60" th:width="60"></a>
+
+    <form th:action="@{/api/buckets/{id}(id=${product.getId()})}" th:method="post">
+        <input type="hidden" name="_method" value="delete" />
+        <input type="submit" th:value="delete" name="delete">
+    </form>
+    <br/><hr/><br/>
+
+
+</div>
+
+<script type="text/javascript" th:src="@{/js/modalWindow.js}"></script>
+
+</body>
+</html>

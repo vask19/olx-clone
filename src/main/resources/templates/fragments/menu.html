@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:sec="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" type="text/css" media="all"
+          href="/menu.css" th:href="@{/menu.css}" />
+
+
+
+</head>
+<body>
+
+<div  id="nav-menu" class="container">
+    <menu class="menu">
+        <nav class="menu__nav">
+            <div class="menu__nav__item__home">
+                <a th:href="@{/api}" class="menu__nav__home">ySellb</a>
+            </div>
+            <div class="menu__nav__items">
+                <a th:href="@{/api/chats}" class="menu__nav__chats">Chats</a>
+                <a href="" class="menu__nav__account">My account</a>
+                <a th:href="@{/api/products/add}" class="menu__nav__add">Add product</a>
+            </div>
+        </nav>
+    </menu>
+    <div class="modal__window">
+        <ul class="modal__window__list">
+            <li>Products</li>
+            <a th:href="@{/api/buckets/}"><li >Bucket</li></a>
+            <a th:href="@{/api/settings/}"><li>Settings</li></a>
+            <a th:href = "@{/logout}"><li>Log out</li></a>
+            <div sec:authorize="hasAnyAuthority('ROLE_ADMIN')">
+                <a th:href="@{/api/admin}"><li>Admin panel</li></a>
+            </div>
+        </ul>
+    </div>
+</div>
+
+
+</body>
+</html>

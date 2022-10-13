@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Products</title>
+    <link rel="stylesheet" type="text/css" media="all"
+          href="/menu.css" th:href="@{/menu.css}" />
+</head>
+<body>
+<div th:insert="~{fragments/menu :: #nav-menu}"></div>
+
+
+
+<a th:href="@{/api/products/add}">add new product</a>
+
+
+
+
+<!--<div class="container">-->
+<!--    <div class="page">-->
+<!--        <h1>Offers</h1>-->
+<!--        <div class="main">-->
+<!--            <div class="main__card">-->
+<!--                <img src="" alt="">-->
+<!--                <div class="main__card__description">lorem</div>-->
+<!--                <div class="main__card__location">Warszawa</div>-->
+<!--                <div class="main__card__price">-->
+<!--                    3000-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</div>-->
+<!--</div>-->
+
+
+
+
+<!--<div th:each="product: ${productDtoList}">-->
+<!--   <div  >-->
+
+<!--       <p th:text="${product.getName()}">Name</p>-->
+<!--       <p th:text="${product.getPrice()}" >price</p>-->
+<!--       <a th:href="@{/api/products/{id}(id=${product.getId()})}"><img th:src="@{/api/images/{id}(id=${product.getImageIds().get(0)})}" th:high="60" th:width="60"></a>-->
+
+
+<!--       <hr/>-->
+<!--   </div>-->
+
+<!--</div>-->
+
+
+<script type="text/javascript" th:src="@{/js/modalWindow.js}"></script>
+</body>
+</html>

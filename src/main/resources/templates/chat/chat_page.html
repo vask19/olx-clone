@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div th:insert="~{fragments/menu :: #nav-menu}"></div>
+<link rel="stylesheet" type="text/css" media="all"
+      href="/menu.css" th:href="@{/menu.css}" />
+
+
+    <div th:each="message: ${chatDto.getMessageDtoList()}">
+        <div >
+
+            <span th:text="${message.isSent()} ? ${chatDto.getSendersUsername()} : ${chatDto.getRecipientsUsername()}"></span>
+            <span>: </span>
+            <span th:text=" ${message.getText()}"></span>
+        </div>
+    </div>
+
+    <form th:method="post"  th:action="@{/api/chats/{id}/send(id=${chatDto.getId()})}" th:object="${messageDto}">
+        <textarea th:field="*{text}" rows="5" cols="5"></textarea>
+        <input type="submit" th:value="send">
+
+
+    </form>
+
+<script type="text/javascript" th:src="@{/js/modalWindow.js}"></script>
+
+</body>
+</html>

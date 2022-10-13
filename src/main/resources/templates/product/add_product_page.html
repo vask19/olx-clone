@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div th:insert="~{fragments/menu :: #nav-menu}"></div>
+<link rel="stylesheet" type="text/css" media="all"
+      href="/menu.css" th:href="@{/menu.css}" />
+
+<form th:method="post" th:action="@{/api/products}" th:object="${productDto}" enctype="multipart/form-data">
+
+    <label for="name">Product name: </label>
+    <input type="text" th:field = "*{name}" id="name">
+    <br/>
+
+    <label for="description">Description: </label>
+    <input type="text" th:field = "*{description}" id="description">
+    <br/>
+
+    <label for="price">Price: </label>
+    <input type="text" th:field = "*{price}" id="price">
+    <br/>
+
+
+    Product type:
+    <br/>
+    <select th:field = "*{type}">
+        <option th:each="type : ${T(com.vask.ysellbtoheroku.model.enums.Type).values()}"
+                th:value="${type}"
+                th:text="${type}">
+        </option>
+    </select>
+    <br/>
+
+
+    Your Locate:
+    <br/>
+    <select th:field = "*{locate}">
+        <option th:each="locate : ${T(com.vask.ysellbtoheroku.model.enums.Locate).values()}"
+                th:value="${locate}"
+                th:text="${locate}">
+        </option>
+    </select>
+    <br/>
+    Add photos:
+    <br/>
+    <input type="file" name="file1">
+    <input type="file" name="file2">
+    <input type="file" name="file3">
+
+    <input type="submit" value="add">
+
+</form>
+<script type="text/javascript" th:src="@{/js/modalWindow.js}"></script>
+
+</body>
+</html>

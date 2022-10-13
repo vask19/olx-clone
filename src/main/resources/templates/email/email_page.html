@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" type="text/css" media="all"
+          href="/menu.css" th:href="@{/menu.css}" />
+</head>
+<body>
+<div th:insert="~{fragments/menu :: #nav-menu}"></div>
+<form th:method="post" th:action="@{/api/emails/activation/check}" th:object="${code}">
+    <label for="code">Enter your activated code: </label>
+    <input type="text" th:field="*{value}" id="code">
+    <input type="submit" value="send">
+</form>
+<script type="text/javascript" th:src="@{/js/modalWindow.js}"></script>
+
+</body>
+</html>

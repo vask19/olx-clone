@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Users</title>
+</head>
+<body>
+<div th:insert="~{fragments/menu :: #nav-menu}"></div>
+<link rel="stylesheet" type="text/css" media="all"
+      href="/menu.css" th:href="@{/menu.css}" />
+
+
+
+<table th:border="1">
+    <tr>
+        <th>Photo</th>
+        <th>Id</th>
+        <th>Email</th>
+        <th>Username</th>
+        <th>Role</th>
+        <th>Active</th>
+
+    </tr>
+    <tr th:each = "userDto : ${userDtoList}">
+        <td><img th:src="@{/api/avatars/{id}(id=${userDto.getUsername})}" th:high="60" th:width="60"></td>
+        <td th:text="${userDto.getId}"> </td>
+        <td th:text="${userDto.getEmail}"> </td>
+        <td th:text="${userDto.getUsername}"> </td>
+        <td th:text="${userDto.getRole}"> </td>
+        <td th:text="${userDto.isActive}"> </td>
+
+    </tr>
+</table>
+
+
+
+</div>
+<script type="text/javascript" th:src="@{/js/modalWindow.js}"></script>
+
+</body>
+</html>
