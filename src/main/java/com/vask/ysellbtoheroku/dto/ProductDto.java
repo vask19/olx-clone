@@ -6,6 +6,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -27,6 +28,7 @@ public class ProductDto {
     private Integer userId;
     private String ownerUsername;
     private Long previewImageId;
+    private LocalDateTime dateOfCreated;
 
     public ProductDto(Integer bookId) {
         this.id = bookId;

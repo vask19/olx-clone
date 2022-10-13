@@ -1,12 +1,17 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
 
 <head>
     <meta charset="UTF-8">
+    <link rel="shortcut icon" th:href="@{/icon.png}" type="image/x-icon">
+
     <link rel="stylesheet" type="text/css" media="all"
           href="/menu.css" th:href="@{/menu.css}" />
     <link rel="stylesheet" type="text/css" media="all"
           href="/all_products_page.css" th:href="@{/all_products_page.css}" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
 
     <title>home</title>
 
@@ -15,17 +20,13 @@
 <body>
 <div th:insert="~{fragments/menu :: #nav-menu}"></div>
 
+
+<p th:text="${productDtoList.get(0).getId()}"></p>
+<span id="products" th:text="${productDtoList}"></span>
 <div class="container">
     <div class="page">
-        <h1>Offers</h1>
+        <div class="page__ofer">Offers</div>
         <div class="main">
-            <div class="main__card">
-                <img src="" alt="">
-                <div class="main__card__description">lorem</div>
-                <div class="main__card__location">Warszawa</div>
-                <div class="main__card__price">
-                    3000
-                </div>
             </div>
         </div>
     </div>
@@ -38,20 +39,25 @@
 
 
 
-<script>
-    function showCard(data){
+<script type="text/javascript" th:inline="javascript">
+        var list = [[${productDtoList}]];
+
+    function showCard(productDtoList){
         const cards=document.querySelector(".main");
-        data.forEach((el)=>{
+        productDtoList.forEach(el=>{
             const cardEl=document.createElement("div");
-            cardEl.innerHTML=`<div class="main__card">
-                <img src="" alt="">
-                <div class="main__card__description">lorem</div>
-                <div class="main__card__location">Warszawa</div>
-                <div class="main__card__price">300</div>`
+            cardEl.innerHTML=`<div class="main__card"
+             <a href="/api/products/${el.id}"><img src="/api/images/${el.previewImageId}"></a>
+                <div class="main__card__description">${el.description}</div>
+                <div class="main__card__location">${el.locate} - ${el.dateOfCreated}</div>
+                <div class="main__card__price">${el.price}$</div>
+                </div>`
             cards.appendChild(cardEl);
         })
     }
-    showCard();
+
+showCard(list)
+
 </script>
 
 <script >

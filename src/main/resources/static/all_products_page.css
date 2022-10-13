@@ -2,29 +2,59 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: 'Open Sans', sans-serif;
 }
+body{
+    background-color: white;
+}
+
 .page{
     width: 1280px;
     height: 100%;
     margin: 0 auto;
-
 }
-h1{
+.page__ofer{
     text-align: center;
-    margin-bottom: 30px;
+    font-size: 50px;
+    font-weight: bolder;
+    margin-top: 30px;
 }
 .main{
+    background-color: rgba(217,217,217,0.17);
     width: 90%;
-    border: 1px solid black;
     text-align: center;
-    margin: 0 auto;
+    margin: 50px auto 0 auto;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    padding-top:30px ;
 }
+/*Main card*/
 .main__card{
     width: 240px;
-    height: 320px;
-    border: 1px solid black;
+    height: 350px;
     margin: 20px;
+    padding: 20px;
+    background-color: white;
+}
+img{
+    height: 200px;
+    width: 140px;
+
+}
+.main__card__description{
+    text-align: left;
+    margin-top: 10px;
+    margin-bottom: 30px;
+
+}
+.main__card__location{
+    text-align: left;
+    font-size: 14px;
+    color: grey;
+}
+.main__card__price{
+    text-align: left;
+    margin-top: 15px;
+    font-weight: bolder;
 }
