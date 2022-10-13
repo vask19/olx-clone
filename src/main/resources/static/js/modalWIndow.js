@@ -3,4 +3,6 @@
     menuAcc.addEventListener("click",(e)=>{
     e.preventDefault()
     modalW.classList.toggle("hidden")
+
+   console.log("34")
 })
