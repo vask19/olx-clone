@@ -1,0 +1,47 @@
+
+spring:
+  mvc:
+    hiddenmethod:
+      filter:
+        enabled: true
+
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: ysellby@gmail.com
+    password: ybrieqemhkqpjqxv
+    test-connection: true
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+    sender:
+      email: no-reply@gmail.com
+      text: no-reply
+
+
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: ${JDBC_DATABASE_URL:jdbc:postgresql://localhost:5433/postgres}
+    username: ${JDBC_DATABASE_USERNAME:postgres}
+    password: ${JDBC_DATABASE_PASSWORD:pass}
+    dbcp2:
+      default-schema: public
+  jpa:
+    hibernate:
+
+      ddl-auto: update
+    show-sql: true
+  flyway:
+    baseline-on-migrate: true
+jwt-secret: "QmZPrNuuujH87_poi12985JJhjr"
+logging:
+  file:
+    path: /
+    name: ysellb.log
+server:
+  port: 8080
+
+
