@@ -42,6 +42,6 @@ logging:
     path: /
     name: ysellb.log
 server:
-  port: 8082
+  port: 8080
 
 

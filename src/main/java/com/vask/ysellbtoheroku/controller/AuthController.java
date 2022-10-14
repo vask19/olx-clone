@@ -35,14 +35,14 @@ public class AuthController {
 
     @PostMapping("/registration")
     public String registration(@ModelAttribute("signupRequest") @Valid SignupRequest signupRequest,
-                               BindingResult bindingResult,
-                               @RequestPart("avatar")MultipartFile avatar){
+                               BindingResult bindingResult
+                               ){
         userValidator.validate(signupRequest,bindingResult);
 
         if (bindingResult.hasErrors()){
             return "auth/registration";
         }
-        registrationService.register(signupRequest,avatar);
+        registrationService.register(signupRequest);
         return "redirect:/login";
 
     }

@@ -1,37 +1,104 @@
+<!--<!DOCTYPE html>-->
+<!--<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">-->
+
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <title>Product info</title>-->
+<!--</head>-->
+<!--<body>-->
+<!--<div th:insert="~{fragments/menu :: #nav-menu}" ></div>-->
+<!--<link rel="stylesheet" type="text/css" media="all"-->
+<!--      href="/menu.css" th:href="@{/menu.css}" />-->
+
+
+<!--<p th:text="${productDto.getName()}"></p>-->
+<!--<p th:text="${productDto.getType()}"></p>-->
+<!--<p th:text="${productDto.getLocate()}"></p>-->
+<!--<p th:text="${productDto.getPrice()}"></p>-->
+<!--<p th:text="${productDto.getDescription()}"></p>-->
+
+<!--<br/>-->
+<!--<form th:method="get" th:action="@{/api/buckets/add/{id}(id=${productDto.getId()})}">-->
+<!--    <input type="submit" th:value="add">-->
+<!--</form>-->
+
+<!--<a th:href="@{/api/users/{id}(id=${productDto.getUserId()},productId=${productDto.getId})}"><p th:text="${productDto.getOwnerUsername()}"></p></a >-->
+
+<!--<form th:method="post"  th:action="@{/api/chats/{id}(id=${productDto.getUserId()})}" th:object="${messageDto}">-->
+<!--    <textarea th:field="*{text}" rows="5" cols="5"></textarea>-->
+<!--    <input type="hidden" id="productId" name="productId" th:value="${productDto.getId()}"/>-->
+<!--    <input type="submit" th:value="send">-->
+
+
+<!--</form>-->
+
+
+<!--<script >-->
+<!--    const menuAcc=document.querySelector(".menu__nav__account");-->
+<!--    const modalW=document.querySelector(".modal__window");-->
+<!--    menuAcc.addEventListener("click",(e)=>{-->
+<!--        e.preventDefault()-->
+<!--        modalW.classList.toggle("hidden")-->
+
+
+<!--    })-->
+<!--</script>-->
+
+<!--</body>-->
+<!--</html>-->
+
+
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
-
 <head>
     <meta charset="UTF-8">
-    <title>Product info</title>
+    <title>Title</title>
+    <link rel="stylesheet" href="css.css">
 </head>
 <body>
+
 <div th:insert="~{fragments/menu :: #nav-menu}" ></div>
 <link rel="stylesheet" type="text/css" media="all"
       href="/menu.css" th:href="@{/menu.css}" />
 
+<link rel="stylesheet" type="text/css" media="all"
+      href="/product_info.css" th:href="@{/product_info.css}" />
 
-<p th:text="${productDto.getName()}"></p>
+<div class="container">
+    <div class="main">
+
+
+
+        <div class="product">
+            <img class="product__img" th:src="@{/api/images/{id}(id=${productDto.getPreviewImageId()})}" alt="">
+            <div class="product__data"><p th:text="${productDto.getDateOfCreated()}"></p></div>
+            <div class="product__description"><p th:text="${productDto.getName()}"></p></div>
+            <div class="product__price"><p th:text="${productDto.getPrice()}"></p></div>
+            <div class="product__describe"><br> <p th:text="${productDto.getDescription()}"></p></div>
+            <div class="product__id"><p th:text="${productDto.getId()}"></p></div>
+            <div class="product__chat">
+
+            </div>
+
+            <div class="down_user">
+                <a th:href="@{/api/users/{id}(id=${productDto.getUserId()},productId=${productDto.getId})}"><p th:text="${productDto.getOwnerUsername()}"></p></a >
+                <form th:method="post"  th:action="@{/api/chats/{id}(id=${productDto.getUserId()})}" th:object="${messageDto}">
+                    <textarea th:field="*{text}" rows="5" cols="5"></textarea>
+                    <input type="hidden" id="productId" name="productId" th:value="${productDto.getId()}"/>
+                    <input type="submit" th:value="send">
+                </form>
+            </div>
+        </div>
+        <div class="user">
+
+        </div>
+    </div>
+</div>
+
+
+
 <p th:text="${productDto.getType()}"></p>
 <p th:text="${productDto.getLocate()}"></p>
-<p th:text="${productDto.getPrice()}"></p>
-<p th:text="${productDto.getDescription()}"></p>
-
-<br/>
-<form th:method="get" th:action="@{/api/buckets/add/{id}(id=${productDto.getId()})}">
-    <input type="submit" th:value="add">
-</form>
-
-<a th:href="@{/api/users/{id}(id=${productDto.getUserId()},productId=${productDto.getId})}"><p th:text="${productDto.getOwnerUsername()}"></p></a >
-
-<form th:method="post"  th:action="@{/api/chats/{id}(id=${productDto.getUserId()})}" th:object="${messageDto}">
-    <textarea th:field="*{text}" rows="5" cols="5"></textarea>
-    <input type="hidden" id="productId" name="productId" th:value="${productDto.getId()}"/>
-    <input type="submit" th:value="send">
-
-
-</form>
-
 
 <script >
     const menuAcc=document.querySelector(".menu__nav__account");
@@ -43,6 +110,5 @@
 
     })
 </script>
-
 </body>
 </html>

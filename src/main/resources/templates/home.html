@@ -21,8 +21,6 @@
 <div th:insert="~{fragments/menu :: #nav-menu}"></div>
 
 
-<p th:text="${productDtoList.get(0).getId()}"></p>
-<span id="products" th:text="${productDtoList}"></span>
 <div class="container">
     <div class="page">
         <div class="page__ofer">Offers</div>
@@ -46,11 +44,14 @@
         const cards=document.querySelector(".main");
         productDtoList.forEach(el=>{
             const cardEl=document.createElement("div");
-            cardEl.innerHTML=`<div class="main__card"
-             <a href="/api/products/${el.id}"><img src="/api/images/${el.previewImageId}"></a>
+
+            cardEl.innerHTML=`<div class="main__card">
+                <a href="/api/products/${el.id}" class="main__card__img"><img src="/api/images/${el.previewImageId}"  width=150" height="70"></a>
+
                 <div class="main__card__description">${el.description}</div>
                 <div class="main__card__location">${el.locate} - ${el.dateOfCreated}</div>
                 <div class="main__card__price">${el.price}$</div>
+
                 </div>`
             cards.appendChild(cardEl);
         })

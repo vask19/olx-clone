@@ -25,12 +25,8 @@ public class RegistrationService {
     private final AvatarRepository avatarRepository;
 
     @Transactional
-    public SignupRequest register(SignupRequest signupRequest, MultipartFile avatar) {
+    public SignupRequest register(SignupRequest signupRequest) {
         User user = signupMapper.toUser(signupRequest);
-        Avatar imageAvatar = toImageEntity(avatar);
-        avatarRepository.save(imageAvatar);
-        imageAvatar.setUser(user);
-        user.setAvatar(imageAvatar);
         user.setActive(true);
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         user.setRole(Role.ROLE_NOT_CONFIRMED_USER);
@@ -40,21 +36,7 @@ public class RegistrationService {
         return signupMapper.fromUser(user);
     }
 
-    public Avatar toImageEntity(MultipartFile file){
-        try {
 
-            return Avatar.builder()
-                    .name(file.getName())
-                    .originalFileName(file.getOriginalFilename())
-                    .contentType(file.getContentType())
-                    .size(file.getSize())
-                    .bytes(file.getBytes())
-                    .build();
-        } catch (Exception e) {
-            e.printStackTrace();
-            return new Avatar();
-        }
-    }
 
 }
 

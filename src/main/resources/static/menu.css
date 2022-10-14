@@ -102,9 +102,11 @@ nav a{
     border-radius: 20px;
     font-size: 14px;
     align-items: center;
-    padding: 12px;
-    height: 65%;
+    height: 40px;
     position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 
