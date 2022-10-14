@@ -3,6 +3,7 @@ import com.vask.ysellbtoheroku.service.CustomUserDetailsServiceImpl;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityCustomizer;
 import org.springframework.security.config.annotation.web.configurers.LogoutConfigurer;
@@ -23,11 +24,13 @@ public class SecurityConfig {
                 .authorizeHttpRequests((requests) -> requests
                         .antMatchers("/api/admin/**").hasRole("ADMIN")
                         .antMatchers("/api/auth/**","/api/").permitAll()
+
                         .antMatchers("/api/message/**").hasAnyRole("USER","ADMIN")
                         .antMatchers("/api/emails/activation/**").hasRole("NOT_CONFIRMED_USER")
                         .anyRequest()
                         .hasAnyRole("USER", "ADMIN")
                         .and()
+
                 )
                 .userDetailsService(customUserDetailsService)
 
@@ -42,16 +45,19 @@ public class SecurityConfig {
         return http.build();
     }
 
+    @Bean
+    public WebSecurityCustomizer ignoringCustomizer() {
+        return (web) -> web.ignoring().antMatchers("/resources/**");
+    }
+
+
+
 
     @Bean
     public PasswordEncoder passwordEncoder(){
         return new BCryptPasswordEncoder();
     }
 
-    @Bean
-    public WebSecurityCustomizer webSecurityCustomizer(){
-         return (web) -> web.ignoring();
-    }
 
 }
 
