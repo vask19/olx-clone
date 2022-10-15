@@ -1,4 +1,6 @@
 package com.vask.ysellbtoheroku.config;
+import com.sun.jdi.Method;
+import com.vask.ysellbtoheroku.security.CustomSimpleUrlAuthenticationSuccessHandler;
 import com.vask.ysellbtoheroku.service.CustomUserDetailsServiceImpl;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
@@ -10,6 +12,7 @@ import org.springframework.security.config.annotation.web.configurers.LogoutConf
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 
 @EnableWebSecurity
 @RequiredArgsConstructor
@@ -24,6 +27,9 @@ public class SecurityConfig {
                 .authorizeHttpRequests((requests) -> requests
                         .antMatchers("/api/admin/**").hasRole("ADMIN")
                         .antMatchers("/api/auth/**","/api/").permitAll()
+                        .antMatchers("/api/products").permitAll()
+                        .antMatchers("/api/images/{id}").permitAll()
+
 
                         .antMatchers("/api/message/**").hasAnyRole("USER","ADMIN")
                         .antMatchers("/api/emails/activation/**").hasRole("NOT_CONFIRMED_USER")
@@ -37,6 +43,7 @@ public class SecurityConfig {
                 .formLogin().loginPage("/api/auth/login")
                     .loginProcessingUrl("/process_login")
                     .defaultSuccessUrl("/api/",true)
+                .successHandler(customAuthenticationSuccessHandler())
                     .failureUrl("/api/auth/login?error")
                     .permitAll()
                 .and()
@@ -51,6 +58,10 @@ public class SecurityConfig {
     }
 
 
+    @Bean
+    public AuthenticationSuccessHandler customAuthenticationSuccessHandler(){
+        return new CustomSimpleUrlAuthenticationSuccessHandler();
+    }
 
 
     @Bean

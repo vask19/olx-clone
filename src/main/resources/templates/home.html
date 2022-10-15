@@ -15,6 +15,221 @@
           href="/all_products_page.css" th:href="@{/all_products_page.css}" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+
+        }
+        #nav-menu{
+            width: 100vw;
+            /*height: 100vh;*/
+        }
+        .menu{
+            height: 10vh;
+            background-color: #0c3354;
+            text-align: center;
+            margin: 0 auto;
+            display: flex;
+            justify-content: center;
+
+        }
+        nav{
+            width: 80%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+        }
+        nav a{
+            color: white;
+            text-decoration: none;
+        }
+
+        .menu__nav__home{
+            color: white;
+            font-family: 'Open Sans', sans-serif;
+            font-size: 40px;
+            font-style: italic;
+            margin-bottom: 20px;
+            margin-right: 300px;
+
+        }
+        .menu__nav__items{
+            height: 100%;
+            display: flex;
+            font-family: 'Poppins', sans-serif;
+
+        }
+        .menu__nav__items a {
+
+        }
+        .container{
+            width: 100vw;
+            /*height: 100vh;*/
+        }
+        .menu{
+            height: 10vh;
+            background-color: #0c3354;
+            text-align: center;
+            margin: 0 auto;
+            display: flex;
+            justify-content: center;
+
+        }
+        nav{
+            width: 80%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+        }
+        nav a{
+            color: white;
+            text-decoration: none;
+        }
+
+        .menu__nav__home{
+            color: white;
+            font-family: 'Open Sans', sans-serif;
+            font-size: 40px;
+            font-style: italic;
+            margin-bottom: 20px;
+            margin-right: 300px;
+
+        }
+        .menu__nav__items {
+            align-items: center;
+            height: 100%;
+        }
+
+        .menu__nav__items a {
+            margin-right: 80px;
+            margin-left: 20px;
+
+        }
+
+        .menu__nav__add{
+            margin-left: 20px;
+            background-color: #179dda;
+            width: 150px;
+            color: white;
+            border-radius: 20px;
+            font-size: 14px;
+            align-items: center;
+            height: 40px;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+
+        .menu__nav__chats:hover{
+            color: #179dda;
+
+        }
+        .menu__nav__add:hover{
+            background-color: white;
+            color: #179dda;
+        }
+
+        /*Modal window*/
+        .modal__window{
+            display: none;
+            position: fixed;
+            z-index: 1;
+            overflow: auto;
+            height: 180px;
+            width: 120px;
+            background-color: #0c3354;
+            right: 33%;
+            top: 60px;
+            text-align: center;
+        }
+        .modal__window__list{
+            color: white;
+            margin: 20px 0;
+        }
+        .modal__window__list li{
+            margin-bottom: 20px;
+        }
+        .modal__window__list li:hover{
+            color: #179dda;
+            cursor: pointer;
+        }
+        .hidden{
+            display: flex;
+        }
+
+    </style>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Open Sans', sans-serif;
+        }
+        body{
+            background-color: white;
+        }
+
+        .page{
+            width: 1280px;
+            height: 100%;
+            margin: 0 auto;
+        }
+        .page__ofer{
+            text-align: center;
+            font-size: 50px;
+            font-weight: bolder;
+            margin-top: 30px;
+        }
+        .main{
+            background-color: rgba(217,217,217,0.17);
+            width: 90%;
+            text-align: center;
+            margin: 50px auto 0 auto;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            padding-top:30px ;
+        }
+        /*Main card*/
+        .main__card{
+            width: 240px;
+            height: 350px;
+            margin: 20px;
+            padding: 20px;
+            background-color: white;
+        }
+        img{
+            height: 200px;
+            width: 180px;
+
+
+        }
+        .main__card__description{
+            text-align: left;
+            margin-top: 10px;
+            margin-bottom: 30px;
+
+        }
+        .main__card__location{
+            text-align: left;
+            font-size: 14px;
+            color: grey;
+        }
+        .main__card__price{
+            text-align: left;
+            margin-top: 15px;
+            font-weight: bolder;
+        }
+
+    </style>
 
     <title>home</title>
 <script>

@@ -3,26 +3,172 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <link rel="stylesheet" type="text/css" media="all"
-          href="/menu.css" th:href="@{/menu.css}" />
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+
+        }
+        #nav-menu{
+            width: 100vw;
+            /*height: 100vh;*/
+        }
+        .menu{
+            height: 10vh;
+            background-color: #0c3354;
+            text-align: center;
+            margin: 0 auto;
+            display: flex;
+            justify-content: center;
+
+        }
+        nav{
+            width: 80%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+        }
+        nav a{
+            color: white;
+            text-decoration: none;
+        }
+
+        .menu__nav__home{
+            color: white;
+            font-family: 'Open Sans', sans-serif;
+            font-size: 40px;
+            font-style: italic;
+            margin-bottom: 20px;
+            margin-right: 300px;
+
+        }
+        .menu__nav__items{
+            height: 100%;
+            display: flex;
+            font-family: 'Poppins', sans-serif;
+
+        }
+        .menu__nav__items a {
+
+        }
+        .container{
+            width: 100vw;
+            /*height: 100vh;*/
+        }
+        .menu{
+            height: 10vh;
+            background-color: #0c3354;
+            text-align: center;
+            margin: 0 auto;
+            display: flex;
+            justify-content: center;
+
+        }
+        nav{
+            width: 80%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+        }
+        nav a{
+            color: white;
+            text-decoration: none;
+        }
+
+        .menu__nav__home{
+            color: white;
+            font-family: 'Open Sans', sans-serif;
+            font-size: 40px;
+            font-style: italic;
+            margin-bottom: 20px;
+            margin-right: 300px;
+
+        }
+        .menu__nav__items {
+            align-items: center;
+            height: 100%;
+        }
+
+        .menu__nav__items a {
+            margin-right: 80px;
+            margin-left: 20px;
+
+        }
+
+        .menu__nav__add{
+            margin-left: 20px;
+            background-color: #179dda;
+            width: 150px;
+            color: white;
+            border-radius: 20px;
+            font-size: 14px;
+            align-items: center;
+            height: 40px;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+
+        .menu__nav__chats:hover{
+            color: #179dda;
+
+        }
+        .menu__nav__add:hover{
+            background-color: white;
+            color: #179dda;
+        }
+
+        /*Modal window*/
+        .modal__window{
+            display: none;
+            position: fixed;
+            z-index: 1;
+            overflow: auto;
+            height: 180px;
+            width: 120px;
+            background-color: #0c3354;
+            right: 33%;
+            top: 60px;
+            text-align: center;
+        }
+        .modal__window__list{
+            color: white;
+            margin: 20px 0;
+        }
+        .modal__window__list li{
+            margin-bottom: 20px;
+        }
+        .modal__window__list li:hover{
+            color: #179dda;
+            cursor: pointer;
+        }
+        .hidden{
+            display: flex;
+        }
+
+    </style>
+
 </head>
 <body>
 <div th:insert="~{fragments/menu :: #nav-menu}"></div>
+
+
+<h1>Check your email</h1>
+
 <form th:method="post" th:action="@{/api/emails/activation/check}" th:object="${code}">
     <label for="code">Enter your activated code: </label>
     <input type="text" th:field="*{value}" id="code">
     <input type="submit" value="send">
 </form>
-<script >
-    const menuAcc=document.querySelector(".menu__nav__account");
-    const modalW=document.querySelector(".modal__window");
-    menuAcc.addEventListener("click",(e)=>{
-        e.preventDefault()
-        modalW.classList.toggle("hidden")
 
 
-    })
-</script>
 
 </body>
 </html>
