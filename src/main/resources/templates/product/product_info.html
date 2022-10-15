@@ -87,12 +87,13 @@
                             <div class="product__chat__contact__items">
                                 <div class="product__chat__contact__item__img"><img src="" alt=""></div>
                                 <div class="product__chat__contact__item__3">
-                                    <div class="product__chat__contact__name">Krystian</div>
+                                    <div class="product__chat__contact__name" ><p th:text="${productDto.getOwnerUsername()}"></p></div>
                                     <div class="product__chat__contact__date">On January 2020 year</div>
                                     <div class="product__chat__contact__online">Online</div>
                                     <div class="product__chat__contact__number">057 869 696</div>
                                 </div></div>
-                            <form class="product__chat__item__form">
+                            <form th:method="post" class="product__chat__item__form"  th:action="@{/api/chats/{id}(id=${productDto.getUserId()})}" th:object="${messageDto}">
+                                <input type="hidden" id="productId" name="productId" th:value="${productDto.getId()}"/>
                                 <input type="text" class="product__chat__contact__item__input">
                                 <button class="product__chat__contact__item__button" type="submit">Send message</button>
 

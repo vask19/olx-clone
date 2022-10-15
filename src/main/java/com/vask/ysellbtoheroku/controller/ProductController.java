@@ -2,8 +2,11 @@ package com.vask.ysellbtoheroku.controller;
 
 import com.vask.ysellbtoheroku.dto.MessageDto;
 import com.vask.ysellbtoheroku.dto.ProductDto;
+import com.vask.ysellbtoheroku.dto.UserDto;
+import com.vask.ysellbtoheroku.model.User;
 import com.vask.ysellbtoheroku.security.CustomUserDetails;
 import com.vask.ysellbtoheroku.service.ProductService;
+import com.vask.ysellbtoheroku.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -23,6 +26,7 @@ import java.util.List;
 public class ProductController {
 
     private final ProductService productService;
+    private final UserService userService;
     @GetMapping("")
     public String allProductsPages(Model model){
         List<ProductDto> productDtoList = productService.getAll();
@@ -37,7 +41,7 @@ public class ProductController {
     }
 
     @GetMapping("/{id}")
-    public String  getProduct(@PathVariable("id") int id,Model model){
+    public String  getProduct(@PathVariable("id") int id,Model model,Principal principal){
         ProductDto productDto =  productService.getProduct(id);
         model.addAttribute("productDto",productDto);
         model.addAttribute("messageDto", new MessageDto());
