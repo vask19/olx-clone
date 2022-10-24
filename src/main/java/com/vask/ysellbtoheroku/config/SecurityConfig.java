@@ -54,7 +54,11 @@ public class SecurityConfig {
 
     @Bean
     public WebSecurityCustomizer ignoringCustomizer() {
-        return (web) -> web.ignoring().antMatchers("/resources/**");
+
+        return (web)
+                -> web.ignoring().antMatchers("/resources/**")
+                .and()
+                .ignoring().antMatchers("/Users/vasylkorol/IdeaProjects/ysellb-to-heroku/src/main/resources/templates/images/1.jpeg");
     }
 
 

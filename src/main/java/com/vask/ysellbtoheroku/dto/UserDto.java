@@ -20,6 +20,7 @@ public class UserDto  {
     private String username;
     private String phoneNumber;
     private boolean active;
+    private boolean online;
     private Role role;
     @Builder.Default
     private List<ProductDto> productDtoList = new ArrayList<>();

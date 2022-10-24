@@ -47,6 +47,8 @@ img{
     text-align: left;
     margin-top: 10px;
     margin-bottom: 30px;
+    overflow: hidden;
+    max-height: 50px;
 
 }
 .main__card__location{

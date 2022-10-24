@@ -31,6 +31,7 @@ public class ProductController {
     public String allProductsPages(Model model){
         List<ProductDto> productDtoList = productService.getAll();
         model.addAttribute("productDtoList",productDtoList);
+
         return "product/product_page";
     }
 
@@ -45,6 +46,8 @@ public class ProductController {
         ProductDto productDto =  productService.getProduct(id);
         model.addAttribute("productDto",productDto);
         model.addAttribute("messageDto", new MessageDto());
+        UserDto ownerDto = userService.getUserById(productDto.getUserId());
+        model.addAttribute("ownerDto",ownerDto);
         return "product/product_info";
     }
 
