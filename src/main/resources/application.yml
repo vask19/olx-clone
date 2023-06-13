@@ -24,9 +24,9 @@ spring:
 
   datasource:
     driver-class-name: org.postgresql.Driver
-    url: ${JDBC_DATABASE_URL:jdbc:postgresql://localhost:5433/postgres}
+    url: ${JDBC_DATABASE_URL:jdbc:postgresql://localhost:5432/postgres}
     username: ${JDBC_DATABASE_USERNAME:postgres}
-    password: ${JDBC_DATABASE_PASSWORD:pass}
+    password: ${JDBC_DATABASE_PASSWORD:postgres1}
     dbcp2:
       default-schema: public
   jpa:

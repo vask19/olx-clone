@@ -5,56 +5,371 @@
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
+<style>
+    *{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Open Sans', sans-serif;
+    }
+    body{
+        background-color: #f2f4f5;
+    }
+    .container{
+        width: 100%;
+    }
+    .main{
+        padding-top: 30px;
+        width: 1280px;
+        margin: 0 auto;
+    }
+    h1{
+        font-size: 35px;
+        font-weight: bolder;
+        margin-bottom: 30px;
+    }
+    .page__input{
+        border: none;
+        background-color: #f2f4f5;
+        opacity: 0.8;
+        border-radius: 10px;
+        height: 50px;
+        padding-left: 15px;
+        outline: none;
+    }
+    .page{
+        width: 100%;
+    }
+    .page__product__name__description{
+        margin-top: 10px;
+        font-size: 20px;
+        margin-bottom: 20px;
+        font-weight: bolder;
+    }
+    .page__product__name{
+        width: 100%;
+        height: 280px;
+        background-color: white;
+        margin-bottom: 20px;
+        padding: 20px;
+    }
+    .page__product__name__title{
+        font-size: 14px;
+        color: #020b14;
+        margin-bottom: 10px;
+    }
+    .page__product__name__input{
+        width: 50%;
+        margin-bottom: 20px;
+    }
+    .page__input::placeholder{
+        color: #020b14;
+    }
+    .page__product__type__description{
+        font-size: 14px;
+        color: #020b14;
+        margin-bottom: 10px;
+    }
+    .page__product__type__input{
+        width: 50%;
+        -moz-appearance: none;
+        -webkit-appearance: none;
+        border: none;
+        position: relative;
+        outline: none;
+    }
+    select{
+        -moz-appearance: none;
+        -webkit-appearance: none;
+        border: none;
+        position: relative;
+        outline: none;
+    }
+    /*product description*/
+    .page__product__description{
+        width: 100%;
+        height: 280px;
+        background-color: white;
+        margin-bottom: 20px;
+        padding: 20px;
+
+    }
+    .page__product__description__title{
+        margin-top: 10px;
+        font-size: 14px;
+        color: #020b14;
+        margin-bottom: 10px;
+    }
+    .page__product__description__textearea{
+        width: 50%;
+        height: 200px;
+        resize: none;
+        padding: 15px;
+        line-height: 1.5;
+        font-size: 14px;
+    }
+    /*Locate*/
+    .page__product__locate{
+        display: flex;
+        width: 100%;
+        height: 130px;
+        background-color: white;
+        margin-bottom: 20px;
+        padding: 20px;
+    }
+    .page__product__locate__title{
+        margin-right: 30px;
+        width: 30%;
+        font-size: 14px;
+        color: #020b14;
+        margin-bottom: 20px;
+    }
+    .page__product__locate__description{
+        margin-bottom: 10px;
+    }
+    .page__product__locate__input{
+        width: 100%;
+    }
+    /*photo*/
+    .page__product__photo{
+        width: 100%;
+        height: 300px;
+        background-color: white;
+        padding: 20px;
+        margin-bottom: 20px;
+    }
+    .page__product__photo__label{
+        display: flex;
+        width: 100%;
+        height: 100%;
+    }
+    .page__product__photo__title{
+        font-size: 14px;
+        color: #020b14;
+        margin-bottom: 30px;
+    }
+    .page__product__photo__input__add{
+        height: 200px;
+        width: 200px;
+        padding: 90px 20px 20px 20px;
+        margin-left: 20px;
+    }
+
+    /*add*/
+    .page__product__add{
+        width: 100%;
+        height: 120px;
+        background-color: white;
+        padding: 20px;
+        margin-bottom: 20px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .page__product__add__button{
+        width: 200px;
+        height: 50px;
+        background-color: #179dda;
+        color: white;
+        border-radius: 20px;
+        border: none;
+        font-size: 18px;
+    }
+    .modal{
+        display: none;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%,-50%);
+        width: 1000px;
+        height: 600px;
+        z-index: 100;
+    }
+    .modal-container {
+        padding: 20px;
+        background-color: white;
+        width: 100%;
+        height: 100%;
+        border: 4px solid #179dda;
+        border-radius: 5px;
+    }
+    .modal__container__title{
+        font-size: 30px;
+        font-weight: bolder;
+        margin-bottom: 20px;
+    }
+    .modal__container__titles{
+        display: flex;
+        justify-content: space-between;
+    }
+    .modal__container__close{
+        height: 50px;
+        width: 50px;
+        cursor: pointer;
+    }
+    .modal__container__close:before, .modal__container__close:after{
+        content: ""; position: absolute; width: 25px; height: 4px; background: red;
+        margin-top: 15px;
+    }
+    .modal__container__close:before{
+        transform: rotate(45deg);
+    }
+    .modal__container__close:after{
+        transform: rotate(-45deg);
+    }
+    .modal__container__types{
+        justify-content: center;
+        display: flex;
+        flex-wrap: wrap;
+    }
+    .modal__container__type{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        margin: 10px;
+        background-color: #eafcfb;
+        width: 290px ;
+        height: 230px;
+        padding: 20px;
+    }
+    .modal__container__type__img{
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        margin-bottom: 20px;
+    }
+    .modal__container__type__description{
+        font-size: 20px;
+        font-weight: bolder;
+        opacity: 0.8;
+    }
+
+    .modal__container__type__description:hover{
+        color: #179dda;
+        cursor: pointer;
+    }
+    @media (min-width: 350px) and (max-width: 750px) {
+        .container{
+            width: 100%;
+            padding: 5px;
+        }
+        .main{
+            padding: 5px;
+            width: 100%;
+            margin: 0 auto;
+        }
+        .main__title{
+            text-align: center;
+        }
+        .page{
+            margin: 0 auto;
+            width: 90%;
+        }
+        .page__product__name__title{
+            font-size: 16px;
+        }
+        .page__input{
+            width: 100%;
+        }
+        .page__product__type__description{
+            font-size: 16px;
+        }
+        .page__product__locate__title{
+            font-size: 16px;
+        }
+        .page__product__photo__title{
+            font-size: 16px;
+        }
+        .page__product__photo__label{
+            flex-direction: column;
+            justify-content: center;
+        }
+        .page__product__photo{
+            height: 100%;
+        }
+        .page__product__photo__input__add{
+            height: 250px;
+            width: 250px;
+            margin-bottom: 5px;
+        }
+        .modal{
+            width: 100%;
+            height: 800px;
+            overflow: scroll;
+            margin-top: 100px;
+            background-color: white;
+            border: 4px solid blue;
+        }
+        .modal-container{
+            border: none;
+        }
+
+    }
+</style>
 <body>
 <div th:insert="~{fragments/menu :: #nav-menu}"></div>
 <link rel="stylesheet" type="text/css" media="all"
       href="/menu.css" th:href="@{/menu.css}" />
 
-<form th:method="post" th:action="@{/api/products}" th:object="${productDto}" enctype="multipart/form-data">
+<div class="container">
+    <div class="main">
+        <h1 class="main__title">Add your product</h1>
+<form class="page" th:method="post" th:action="@{/api/products}" th:object="${productDto}" enctype="multipart/form-data">
+    <div class="page__product__name">
+        <div class="page__product__name__description">Please write about your product</div>
+        <div class="page__product__name__title">*Product name</div>
+    <input type="text" th:field = "*{name}" class="page__input page__product__name__input " placeholder="Iphone 10">
+        <div class="page__product__type">
+            <div class="page__product__type__description">*Product Type</div>
+            <select th:field = "*{type}" placeholder="Choose your type" class="page__input page__product__type__input">
+                <option th:each="type : ${T(com.vask.ysellbtoheroku.model.enums.Type).values()}"
+                        th:value="${type}"
+                        th:text="${type}">
+                </option>
+            </select>
+        </div>
+    </div>
+    <div class="page__product__description">
+        <div class="page__product__description__title">*Description</div>
+        <textarea th:field = "*{description}" class="page__product__description__textearea page__input" placeholder="Your description"></textarea>
+    </div>
+<!--    <label for="description">Description: </label>-->
+<!--    <input type="text" th:field = "*{description}" id="description">-->
+    <div class="page__product__locate">
+        <div class="page__product__locate__title">
+            <div class="page__product__locate__description">*Location</div>
+            <select th:field = "*{locate}" class="page__product__locate__input page__input" >
+                <option th:each="locate : ${T(com.vask.ysellbtoheroku.model.enums.Locate).values()}"
+                        th:value="${locate}"
+                        th:text="${locate}">
+                </option>
+            </select>
+        </div>
+        <div class="page__product__locate__title">
+            <div class="page__product__locate__description">*Price</div>
+            <input type="number" pattern="[0-9]"  th:field = "*{price}" class="page__product__locate__input page__input" placeholder="Your price">
+        </div>
+    </div>
+    <div class="page__product__photo">
+        <div class="page__product__photo__title">*Add photo</div>
+        <div class="page__product__photo__label">
+            <input type="file" name="file1" accept="image/png, image/gif, image/jpeg" class="page__input page__product__photo__input__add"/>
+            <input type="file" name="file2" accept="image/png, image/gif, image/jpeg" class="page__input page__product__photo__input__add"/>
+            <input type="file" name="file3" accept="image/png, image/gif, image/jpeg" class="page__input page__product__photo__input__add"/>
 
-    <label for="name">Product name: </label>
-    <input type="text" th:field = "*{name}" id="name">
-    <br/>
 
-    <label for="description">Description: </label>
-    <input type="text" th:field = "*{description}" id="description">
-    <br/>
-
-    <label for="price">Price: </label>
-    <input type="text" th:field = "*{price}" id="price">
-    <br/>
-
-
-    Product type:
-    <br/>
-    <select th:field = "*{type}">
-        <option th:each="type : ${T(com.vask.ysellbtoheroku.model.enums.Type).values()}"
-                th:value="${type}"
-                th:text="${type}">
-        </option>
-    </select>
-    <br/>
-
-
-    Your Locate:
-    <br/>
-    <select th:field = "*{locate}">
-        <option th:each="locate : ${T(com.vask.ysellbtoheroku.model.enums.Locate).values()}"
-                th:value="${locate}"
-                th:text="${locate}">
-        </option>
-    </select>
-    <br/>
-    Add photos:
-    <br/>
-    <input type="file" name="file1">
-    <input type="file" name="file2">
-    <input type="file" name="file3">
-
-    <input type="submit" value="add">
+        </div>
+    </div>
+    <div class="page__product__add">
+        <input type="submit" value="Add" class="page__product__add__button">
+    </div>
 
 </form>
+    </div>
+</div>
 <script >
+
     const menuAcc=document.querySelector(".menu__nav__account");
     const modalW=document.querySelector(".modal__window");
     menuAcc.addEventListener("click",(e)=>{

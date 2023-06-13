@@ -22,7 +22,7 @@ nav{
     height: 100%;
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: flex-end;
 
 }
 nav a{
@@ -125,19 +125,51 @@ nav a{
     position: fixed;
     z-index: 1;
     overflow: auto;
-    height: 180px;
+    height: 100px;
     width: 120px;
     background-color: #0c3354;
-    right: 33%;
+    margin-left: 30px;
     top: 60px;
-    text-align: center;
+    justify-content: center;
 }
 .modal__window__list{
     color: white;
     margin: 20px 0;
 }
+.menu__nav__logout{
+    margin-left: 20px;
+    background-color: white;
+    width: 150px;
+    color: #179dda;
+    font-weight: bold;
+    border-radius: 20px;
+    font-size: 14px;
+    align-items: center;
+    height: 40px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.menu__nav__logout:hover{
+    background-color: #179dda;
+    color: white;
+}
 .modal__window__list li{
+    list-style-type: none;
+    color: white;
+}
+.modal__window__list p{
     margin-bottom: 20px;
+    color: white;
+}
+.modal__window__list_link{
+    text-decoration: none;
+    color: white;
+}
+.modal__window__list_link {
+    text-decoration: none;
+    color: white;
 }
 .modal__window__list li:hover{
     color: #179dda;

@@ -20,91 +20,59 @@
 <div th:insert="~{fragments/menu :: #nav-menu}" ></div>
 <link rel="stylesheet" type="text/css" media="all"
       href="/menu.css" th:href="@{/menu.css}" />
+<link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css"
+/>
 
 <link rel="stylesheet" type="text/css" media="all"
       href="/product_info.css" th:href="@{/product_info.css}" />
-
-<!--<div class="container">-->
-<!--    <div class="main">-->
-
-
-
-<!--        <div class="product">-->
-<!--            <img class="product__img" th:src="@{/api/images/{id}(id=${productDto.getPreviewImageId()})}" alt="">-->
-<!--            <div class="product__data"><p th:text="${productDto.getDateOfCreated()}"></p></div>-->
-<!--            <div class="product__description"><p th:text="${productDto.getName()}"></p></div>-->
-<!--            <div class="product__price"><p th:text="${productDto.getPrice()}"></p></div>-->
-<!--            <div class="product__describe"><br> <p th:text="${productDto.getDescription()}"></p></div>-->
-<!--            <div class="product__id"><p th:text="${productDto.getId()}"></p></div>-->
-<!--            <div class="product__chat">-->
-
-<!--            </div>-->
-<!--            <div class="product__item">-->
-<!--                <div class="product__chat">-->
-<!--                    <div class="product__chat__item">-->
-<!--                        <div class="product__chat__contacts">Contact with me</div>-->
-<!--                        <div class="product__chat__contact">-->
-<!--                            <div class="product__chat__contact__items">-->
-<!--                                <div class="product__chat__contact__item__img"><img src="" alt=""></div>-->
-<!--                                <div class="product__chat__contact__item__3">-->
-<!--                                    <div class="product__chat__contact__name" ><p th:text="${productDto.getOwnerUsername()}"></p></div>-->
-<!--                                    <div class="product__chat__contact__date">On January 2020 year</div>-->
-<!--                                    <div class="product__chat__contact__online">Online</div>-->
-<!--                                    <div class="product__chat__contact__number">057 869 696</div>-->
-<!--                                </div></div>-->
-<!--                            <form th:method="post" class="product__chat__item__form"  th:action="@{/api/chats/{id}(id=${productDto.getUserId()})}" th:object="${messageDto}">-->
-<!--                                <input type="hidden" id="productId" name="productId" th:value="${productDto.getId()}"/>-->
-<!--                                <input type="text" class="product__chat__contact__item__input">-->
-<!--                                <button class="product__chat__contact__item__button" type="submit">Send message</button>-->
-
-<!--                            </form>-->
-<!--                        </div>-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--            </div>-->
-
-
-
 
 
 <div class="container">
     <div class="main">
         <div class="product">
+
             <div class="product__item">
-                <img class="product__img" th:src="@{/api/images/{id}(id=${productDto.getPreviewImageId()})}" alt="">
-                <button class="product__item__slider__button__prev"></button>
-                <button class="product__item__slider__button__next"></button>
+                <div class="product__item__slider">
+                    <div class="product__item__slider__line">
+                        <img th:each="image: ${productDto.getImageIds()}" class="product__img" th:src="@{/api/images/{id}(id=${image})}" alt="">
+                    </div>
+                    <button class="product__item__slider__button__prev"><i class="arrow left"></i></button>
+                    <button class="product__item__slider__button__next"><i class="arrow right"></i></button>
                 </div>
-                <div class="product__item">
-                    <div class="product__data"><p th:text="${productDto.getDateOfCreated()}"></p></div>
-                    <div class="product__description"><p th:text="${productDto.getName()}"></p></div>
-                    <div class="product__price"><p th:text="${productDto.getPrice()}"></p></div>
-                    <div class="product__describe"><br> <p th:text="${productDto.getDescription()}"></p></div>
-                    <div class="product__id"><p th:text="${productDto.getId()}"></p></div>
-                </div>
-                <div class="product__item">
-                    <div class="product__chat">
-                        <div class="product__chat__item">
-                            <div class="product__chat__contacts">Contact with me</div>
-                            <div class="product__chat__contact">
-                                <div class="product__chat__contact__items">
-                                    <div class="product__chat__contact__item__img"><img src="" alt=""></div>
-                                    <div class="product__chat__contact__item__3">
-                                        <div class="product__chat__contact__name"><p th:text="${ownerDto.getUsername()}"></p></div>
-                                        <div class="product__chat__contact__date"><p th:text="${ownerDto.getUsername()}"></p></div>
-<!--                                        <div class="product__chat__contact__online"><p th:text="${ownerDto.getUsername()}"></p></div>-->
-                                        <div class="product__chat__contact__number"><p th:text="${ownerDto.getPhoneNumber()}"></p></div>
-                                    </div></div>
-                                <form th:method="post" class="product__chat__item__form"  th:action="@{/api/chats/{id}(id=${productDto.getUserId()})}" th:object="${messageDto}">
-                                    <input type="hidden" id="productId" name="productId" th:value="${productDto.getId()}"/>
-                                    <textarea type="text" class="product__chat__contact__item__input"></textarea>
-                                    <button class="product__chat__contact__item__button" type="submit">Send message</button>
-                                </form>
-                            </div>
+
+            <div class="product__item">
+                <div class="product__data"><p th:text="${productDto.getDateOfCreated()}"></p></div>
+                <div class="product__description"><p th:text="${productDto.getName()}"></p></div>
+                <div class="product__price"><p th:text="${productDto.getPrice()}"></p></div>
+                <div class="product__describe"><br> <p th:text="${productDto.getDescription()}"></p></div>
+                <div class="product__id"><p th:text="${productDto.getId()}"></p></div>
+            </div>
+            <div class="product__item">
+                <div class="product__chat">
+                    <div class="product__chat__item">
+                        <div class="product__chat__contacts">Contact with me</div>
+                        <div class="product__chat__contact">
+                            <div class="product__chat__contact__items">
+                                <div class="product__chat__contact__item__img"><img src="" alt=""></div>
+                                <div class="product__chat__contact__item__3">
+                                    <div class="product__chat__contact__name"><p th:text="${ownerDto.getUsername()}"></p></div>
+                                    <div class="product__chat__contact__date"><p th:text="${ownerDto.getUsername()}"></p></div>
+                                    <!--                                        <div class="product__chat__contact__online"><p th:text="${ownerDto.getUsername()}"></p></div>-->
+                                    <div class="product__chat__contact__number"><p th:text="${ownerDto.getPhoneNumber()}"></p></div>
+                                </div></div>
+                            <form th:method="post" class="product__chat__item__form"  th:action="@{/api/chats/{id}(id=${productDto.getUserId()})}" th:object="${messageDto}">
+                                <input type="hidden" id="productId" name="productId" th:value="${productDto.getId()}"/>
+                                <textarea type="text" class="product__chat__contact__item__input"></textarea>
+                                <button class="product__chat__contact__item__button" type="submit">Send message</button>
+                            </form>
                         </div>
                     </div>
                 </div>
             </div>
+        </div>
+        </div>
         <div class="user">
             <div class="user__person">
                 <div class="user__person__describe">Private person</div>
@@ -120,9 +88,9 @@
             <img  class="user__ad" src="https://tpc.googlesyndication.com/simgad/15814751936861878919?sqp=4sqPyQQrQikqJwhfEAEdAAC0QiABKAEwCTgDQPCTCUgAUAFYAWBfcAJ4AcUBLbKdPg&rs=AOga4qnD7MIXbCfJweOoiG4QOyRwsGE5lQ"/>
 
         </div>
-        </div>
 
-    </div>
+
+</div>
 </div>
 
 
@@ -170,6 +138,44 @@
         })
     }
     initMap();
+</script>
+<script>
+    let image=document.getElementsByClassName("product__img");
+    let images=Array.from(image);
+    console.log(images);
+    const sliderLine= document.querySelector(".product__item__slider__line");
+    let count=0;
+    let width;
+    function init(){
+        width=document.querySelector(".product__item__slider").offsetWidth;
+        sliderLine.style.width=width*images.length+'px';
+        images.forEach((item)=>{
+            item.style.width=width+'px';
+            item.style.height='auto';
+        })
+        rollSlider();
+    }
+    window.addEventListener("resize",init);
+    init();
+    document.querySelector(".product__item__slider__button__next").addEventListener("click",()=>{
+        count++;
+        if(count>=images.length){
+            count=0;
+        }
+        rollSlider();
+    })
+    document.querySelector(".product__item__slider__button__prev").addEventListener("click",()=>{
+        count--;
+        if(count<=0){
+            count=images.length-1;
+        }
+        rollSlider();
+    })
+    function rollSlider(){
+        sliderLine.style.transform='translate(-'+count*width+'px)';
+    }
+
+
 </script>
 
 </body>

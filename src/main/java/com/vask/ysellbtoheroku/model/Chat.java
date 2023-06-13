@@ -34,6 +34,8 @@ public class Chat {
     private List<Message> messages;
     private Long chatImageId;
 
+    private String productDescription;
+
     @Override
     public String toString(){
         return "" + id;

@@ -48,7 +48,7 @@ public class ChatService {
         log.info("User {} tried to send message to user {}", sender.getUsername(),recipient.getUsername());
         Product product = productRepository.findById(productId).orElseThrow(()
             -> new ProductNotFoundException("Product not found"));
-        Chat chat = createChat(sender,recipient,product.getPreviewImageId());
+        Chat chat = createChat(sender,recipient, product);
         Message message = createMessage(messageText,true,chat);
 
         messageRepository.save(message);
@@ -108,14 +108,15 @@ public class ChatService {
 
 
     @Transactional
-    public Chat createChat(User sender,User recipient,Long chatImageId){
+    public Chat createChat(User sender,User recipient, Product product){
        return chatRepository.findByRecipientAndSenderOrSenderAndRecipient(sender,recipient)
                 .orElseGet(() ->
                 {
                     return chatRepository.save(Chat.builder()
                             .sender(sender)
                             .recipient(recipient)
-                            .chatImageId(chatImageId)
+                            .chatImageId(product.getPreviewImageId())
+                            .productDescription(product.getDescription())
                             .messages(new ArrayList<>())
                             .build());
                 });

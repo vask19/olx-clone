@@ -31,10 +31,12 @@ public class MainController {
     }
 
     @GetMapping("/settings")
-    public String getSettingsPage(Principal principal){
-        UserDto userDto = userService.getUserByUsername(principal.getName());
-        return userDto.getRole() == Role.ROLE_USER ? "user/settings_page" : "admin/settings_page";
+    public String getSettingsPage(Model model){
+
+        return "settings/settings";
     }
+
+
 
 
 

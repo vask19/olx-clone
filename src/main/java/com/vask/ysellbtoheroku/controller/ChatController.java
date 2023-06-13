@@ -36,20 +36,25 @@ public class ChatController {
     @GetMapping("")
     public String getAllChats(Principal principal, Model model){
         List<ChatDto> chatDtoList =
-                chatService.getAllChatDtoList(principal);
+                findAllChats(principal);
         model.addAttribute("chatDtoList",chatDtoList);
         model.addAttribute("username",principal.getName());
         return "chat/all_chats_page";
     }
 
-
     @GetMapping("{id}")
-    public String getAllMessagesWithUserById(@PathVariable("id") Integer chatId,Model model){
+    public String getAllMessagesWithUserById(@PathVariable("id") Integer chatId,Model model, Principal principal){
+        var chatDtoList = findAllChats(principal);
 
         var chatDto = chatService.getChatByChatId(chatId);
         model.addAttribute("chatDto",chatDto);
         model.addAttribute("messageDto",new MessageDto());
+        model.addAttribute("chatDtoList", chatDtoList);
 
         return "chat/chat_page";
+    }
+
+    private List<ChatDto> findAllChats(Principal principal) {
+        return chatService.getAllChatDtoList(principal);
     }
 }

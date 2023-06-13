@@ -4,7 +4,76 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Open Sans', sans-serif;
+        }
+        .container {
+            background-color: #f2f4f5;
 
+        }
+        .main{
+            width: 100%;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+        }
+        .chats{
+            height: 100vh;
+            width: 30%;
+            background-color: white;
+            overflow: scroll;
+        }
+        .chats__item{
+            height: 14vh;
+            border-bottom: 1px solid black;
+            display: flex;
+            align-content: center;
+            align-items: center;
+            padding: 10px;
+        }
+        .chats__image img{
+            border: 1px solid grey;
+            border-radius: 50%;
+            height: 90px;
+            width: 90px;
+            margin-right: 20px;
+        }
+        .chats__main{
+            width: 200px;
+        }
+        .chats__main__name{
+            margin-bottom: 10px;
+            font-weight: bolder;
+        }
+        .chats__main__description{
+            font-size: 14px;
+            width: 300px;
+            color: dimgray;
+        }
+        /*window*/
+        .window{
+            display: flex;
+            height: 100vh;
+            width: 70%;
+            background-color: #f2f4f5;
+            justify-content: center;
+            padding-top: 20%;
+        }
+        .window__title{
+            background-color: #179dda;
+            height:50px;
+            width: 350px;
+            border-radius: 30px;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    </style>
 </head>
 <body>
 
@@ -12,35 +81,38 @@
 <link rel="stylesheet" type="text/css" media="all"
       href="/menu.css" th:href="@{/menu.css}" />
 
+<div class="container">
+    <div class="main">
+        <div class="chats">
+            <div class="chats__item" th:each="chat: ${chatDtoList}">
+                <div class="chats__image">
+                    <a th:href="@{/api/chats/{id}(id=${chat.getId()})}"><img th:src="@{/api/images/{id}(id=${chat.getChatImageId()})}" th:high="60" th:width="60"></a>
+                </div>
+                <div class="chats__main">
+                    <div class="chats__main__name" th:text="${chat.getProductDescription()}"></div>
+                    <div class="chats__main__description" th:text="${chat.getProductDescription()}"></div>
+                </div>
+            </div>
+        </div>
+<!--<div th:each="chat: ${chatDtoList}">-->
+<!--    <p th:text="${chat.getSendersUsername()}"></p>-->
+<!--    <br/>-->
+<!--    <img th:src="@{/api/avatars/{id}(id=${chat.getSendersUsername()})}" th:high="60" th:width="60">-->
 
+<!--    <a th:href="@{/api/chats/{id}(id=${chat.getId()})}"><img th:src="@{/api/images/{id}(id=${chat.getChatImageId()})}" th:high="60" th:width="60"></a>-->
 
-
-
-
-<div th:each="chat: ${chatDtoList}">
-    <p th:text="${chat.getSendersUsername()}"></p>
-    <br/>
-    <img th:src="@{/api/avatars/{id}(id=${chat.getSendersUsername()})}" th:high="60" th:width="60">
-    <br/>
-    <br/>
-    <a th:href="@{/api/chats/{id}(id=${chat.getId()})}"><img th:src="@{/api/images/{id}(id=${chat.getChatImageId()})}" th:high="60" th:width="60"></a>
-
-
-
-    <hr/>
-    <br/>
-    <hr/>
-
-
-
+<!--</div>-->
+        <div class="window">
+            <div class="window__title">
+                Please chose person who you want to write
+            </div>
+        </div>
+        </div>
 </div>
-
-
-
-
-
+</div>
 </div>
 <script >
+
     const menuAcc=document.querySelector(".menu__nav__account");
     const modalW=document.querySelector(".modal__window");
     menuAcc.addEventListener("click",(e)=>{

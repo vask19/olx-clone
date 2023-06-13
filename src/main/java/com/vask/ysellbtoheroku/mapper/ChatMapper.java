@@ -29,6 +29,7 @@ public interface ChatMapper {
     @Mapping(target = "recipientId",source = "recipient.id")
     @Mapping(target = "sendersUsername",source = "sender.username")
     @Mapping(target = "recipientsUsername",source = "recipient.username")
+    @Mapping(target = "productDescription",source = "productDescription")
     ChatDto fromChat(Chat chat);
 
     @Mapping(target = "messages",source = "messageDtoList")
