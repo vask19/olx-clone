@@ -50,9 +50,6 @@ public class ProductController {
         model.addAttribute("ownerDto",ownerDto);
         return "product/product_info";
     }
-
-
-
     @PostMapping("")
     public String  addProduct(@RequestPart("file1") MultipartFile file1,
                               @RequestPart("file2") MultipartFile file2,
@@ -63,7 +60,7 @@ public class ProductController {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         CustomUserDetails principal = (CustomUserDetails) authentication.getPrincipal();
         productService.saveNewProduct(productDto,principal,new MultipartFile[]{file1,file2,file3});
-        return "redirect:/api/products";
+        return "redirect:/api";
     }
 
     @DeleteMapping("/{id}")

@@ -9,6 +9,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.mapstruct.factory.Mappers;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.transaction.Transactional;
 import java.util.ArrayList;
@@ -40,7 +41,7 @@ public class UserService {
         return userMapper.fromUser(user);
     }
     @Transactional
-    public UserDto updateUser(UserDto userDto) {
+    public UserDto updateUser(UserDto userDto, MultipartFile multipartFile) {
         User user = userRepository.findFirstByUsername(userDto.getUsername()).orElseThrow(()->
                 new UsernameNotFoundException("User not found with username: " + userDto.getUsername()));
         User newUser = userMapper.toUser(userDto);

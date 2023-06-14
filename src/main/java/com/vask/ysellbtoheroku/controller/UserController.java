@@ -11,6 +11,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 
@@ -22,10 +23,10 @@ public class UserController {
     private final UserService userService;
     private final ProductService productService;
     private ProductMapper mapper = ProductMapper.MAPPER;
-    @PutMapping("/update")
-    private ResponseEntity<UserDto> updateUser(@RequestBody UserDto userDto){
-        return new ResponseEntity<>(userService.updateUser(userDto),HttpStatus.OK);
-    }
+//    @PutMapping("/update")
+//    private ResponseEntity<UserDto> updateUser(@RequestBody UserDto userDto){
+//        return new ResponseEntity<>(userService.updateUser(userDto),HttpStatus.OK);
+//    }
 
     @GetMapping("/{id}")
     public String  getUsersPage(@PathVariable("id") Integer id, Model model ){
@@ -34,6 +35,12 @@ public class UserController {
         userDto.setProductDtoList(productDtoList);
         model.addAttribute("userDto",userDto);
         return "user/user_page";
+    }
 
+    @PostMapping("/update")
+    public String updateUser(@RequestPart("file1") MultipartFile multipartFile,
+                             @ModelAttribute UserDto userDto) {
+        userService.updateUser(userDto, multipartFile);
+        return "redirect:/api";
     }
 }

@@ -32,6 +32,7 @@ public class MainController {
 
     @GetMapping("/settings")
     public String getSettingsPage(Model model){
+        model.addAttribute("userDto", new UserDto());
 
         return "settings/settings";
     }

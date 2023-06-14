@@ -85,22 +85,22 @@
     <div class="containers">
         <h1 class="title">Settings</h1>
         <div class="content">
-            <form class="content__items">
+            <form class="content__items" th:method="post" th:action="@{/api/users/update}" th:object="${userDto}" enctype="multipart/form-data">
                 <div class="content__item">
                     <p class="content__item__mail content__item__title">Email</p>
-                    <input type="text" class="content__item__input">
+                    <input type="text" class="content__item__input" th:field = "*{name}">
                 </div>
                 <div class="content__item">
                     <p class="content__item__number content__item__title">Phone number</p>
-                    <input type="text" class="content__item__input">
+                    <input type="text" class="content__item__input" th:field = "*{type}">
                 </div>
                 <div class="content__item">
                     <p class="content__item__username content__item__title">Username</p>
-                    <input type="text" class=" content__item__input">
+                    <input type="text" class=" content__item__input" th:field = "*{type}">
                 </div>
                 <div class="content__item">
                     <p class="content__item__password content__item__title">Password</p>
-                    <input type="text" class=" content__item__input">
+                    <input type="text" class=" content__item__input" th:field = "*{type}">
                 </div>
                 <div class="content__item">
                     <p class="content__item__photo content__item__title">Change photo</p>
