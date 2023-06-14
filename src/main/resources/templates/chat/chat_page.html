@@ -228,18 +228,6 @@
                     </div>
             </div>
             <div class="chat__message">
-                <div class="chat__message__title">
-                    <div class="chat__message__title__photo">
-                        <img th:src="@{/api/avatars/{id}(id=${chatDto.getSendersUsername()})}" th:high="60" th:width="60">
-                    </div>
-                    <div class="chat__message__title__text">
-                        <div class="chat__message__title__name" th:text="${chatDto.getSendersUsername()}">
-                        </div>
-                        <div class="chat__message__title__mess">
-                            Online
-                        </div>
-                    </div>
-                </div>
                 <hr>
                 <div class="chat__message__ofeer">
                     <div>
