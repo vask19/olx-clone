@@ -11,7 +11,6 @@ import org.springframework.validation.Validator;
 @Component
 public class UserValidator implements Validator {
 
-
     private final CustomUserDetailsServiceImpl userDetailsService;
 
     @Override
@@ -21,7 +20,6 @@ public class UserValidator implements Validator {
 
     @Override
     public void validate(Object target, Errors errors) {
-
 
         //TODO : create equals service
         SignupRequest user = (SignupRequest) target;
@@ -33,10 +31,5 @@ public class UserValidator implements Validator {
         }
 
         errors.rejectValue("username","","User with such username already exists");
-
-
-
-
-
     }
 }

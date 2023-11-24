@@ -29,7 +29,7 @@ public class EmailService {
     private final UserMapper userMapper = UserMapper.MAPPER;
     private final UserRepository userRepository;
     @Value(value = "${spring.mail.sender.email}")
-    private  String senderEmail;
+    private String senderEmail;
 
     public void sendEmailWithText(EmailReceiver emailReceiver) {
         var message = new SimpleMailMessage();
@@ -44,9 +44,9 @@ public class EmailService {
     }
 
     @Transactional
-    public UserDto sendCodeForActivationEmailToUserEmail(Principal principal){
+    public UserDto sendCodeForActivationEmailToUserEmail(Principal principal) {
         User user = getUserByPrincipal(principal);
-        int code = (new Random().nextInt(100000,900000));
+        int code = (new Random().nextInt(100000, 900000));
         user.setEmailActivationCode(code);
         String text = "Your registration code: " + code;
         EmailReceiver emailReceiver = EmailReceiver.builder()
@@ -59,23 +59,25 @@ public class EmailService {
         log.info("Email with activation code was sent to user");
         return userMapper.fromUser(user);
     }
+
     @Transactional
-    public UserDto activationUsersEmail(Principal principal,Integer usersAuthCode){
+    public UserDto activationUsersEmail(Principal principal, Integer usersAuthCode) {
         User user = getUserByPrincipal(principal);
-        if (user.getEmailActivationCode() == usersAuthCode){
+        if (user.getEmailActivationCode() == usersAuthCode) {
             user.setActiveEmail(true);
             user.setRole(Role.ROLE_USER);
             user = userRepository.save(user);
             log.info("User sent his activation code to the application ");
             log.info("user was activated");
-            Authentication authentication =  SecurityContextHolder.getContext().getAuthentication();
+            Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
             authentication.setAuthenticated(false);
 
-
+        } else {
+            log.info("User sent a false activation code");
         }
-        else log.info("User sent a false activation code");
         return userMapper.fromUser(user);
     }
+
     public User getUserByPrincipal(Principal principal) {
         return userRepository.findFirstByUsername(principal.getName()).orElseThrow(()
                 -> new UsernameNotFoundException("User not found with username: " + principal.getName()));

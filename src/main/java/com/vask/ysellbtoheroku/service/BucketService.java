@@ -37,10 +37,11 @@ public class BucketService {
         Bucket bucket = new Bucket();
         bucket.setUser(user);
         bucket.setProducts(new ArrayList<>());
-        log.info( "a bucket for user was created");
+        log.info("a bucket for user was created");
         return bucketRepository.save(bucket);
 
     }
+
     public User getUserByPrincipal(Principal principal) {
         return userRepository.findFirstByUsername(principal.getName()).orElseThrow(()
                 -> new UsernameNotFoundException("User not exists with username: " + principal.getName()));
@@ -54,15 +55,16 @@ public class BucketService {
 
     @Transactional
     public ProductDto addProduct(Integer bookId, Principal principal) {
-        User user =  getUserByPrincipal(principal);
+        User user = getUserByPrincipal(principal);
         Bucket bucket = bucketRepository.findByUser(user).orElse(null);
-        if (bucket == null){
-            bucket = createBucket(user);}
+        if (bucket == null) {
+            bucket = createBucket(user);
+        }
         List<Product> products = bucket.getProducts();
         List<Product> newProductList = products == null ? new ArrayList<>() : new ArrayList<>(products);
         newProductList.addAll(getCollectRefBooksByIds(Collections.singletonList(bookId)));
         bucket.setProducts(newProductList);
-        log.info( "a product was added to bucket");
+        log.info("a product was added to bucket");
         bucketRepository.save(bucket);
         return productMapper.fromProduct(productRepository.getReferenceById(bookId));
 
@@ -70,8 +72,8 @@ public class BucketService {
     }
 
     @Transactional
-    public BucketDto getBucketByUser(Principal principal){
-        User user =  getUserByPrincipal(principal);
+    public BucketDto getBucketByUser(Principal principal) {
+        User user = getUserByPrincipal(principal);
         Bucket bucket = bucketRepository.findByUser(user).orElse(null);
         if (bucket == null) {
             bucket = createBucket(user);
@@ -81,15 +83,15 @@ public class BucketService {
         BucketDto bucketDto = new BucketDto();
         bucketDto.setProducts(productMapper.fromProductList(getCollectRefBooksByIds(productIds)));
         return bucketDto;
-
     }
+
     @Transactional
     public ProductDto deleteProduct(Integer id, Principal principal) {
-        User user =  getUserByPrincipal(principal);
+        User user = getUserByPrincipal(principal);
         Bucket bucket = bucketRepository.findByUser(user).orElse(null);
         Product product = productRepository.findById(id).orElseThrow(()
-            -> new ProductNotFoundException(id));
-        log.info( "a product from bucket was deleted ");
+                -> new ProductNotFoundException(id));
+        log.info("a product from bucket was deleted ");
         bucket.getProducts().remove(product);
         bucketRepository.save(bucket);
         return productMapper.fromProduct(product);

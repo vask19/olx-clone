@@ -69,9 +69,6 @@ public class ChatService {
                 new ChatNotFoundException("Chat not found with id: "+ chatId));
         User sender = chat.getSender();
         boolean isSend = sender.getUsername().equals(principal.getName());
-        System.out.println();
-        System.out.println(isSend);
-        System.out.println();
         Message message = createMessage(messageText,isSend,chat);
         messageRepository.save(message);
         chat.getMessages().add(message);
@@ -83,11 +80,6 @@ public class ChatService {
         emailService.sendEmailWithText(emailReceiver);
         log.info("message was sent to email");
         return messageMapper.fromMessage(message);
-
-
-
-
-
     }
 
     private Message createMessage(String text,boolean isSent,Chat chat){
@@ -98,6 +90,7 @@ public class ChatService {
                 .chat(chat)
                 .build();
     }
+
     private EmailReceiver createEmailReceiver(String email,String subject,String text){
         return EmailReceiver.builder()
                 .emails(Collections.singletonList(email))
@@ -106,20 +99,17 @@ public class ChatService {
                 .build();
     }
 
-
     @Transactional
     public Chat createChat(User sender,User recipient, Product product){
        return chatRepository.findByRecipientAndSenderOrSenderAndRecipient(sender,recipient)
                 .orElseGet(() ->
-                {
-                    return chatRepository.save(Chat.builder()
-                            .sender(sender)
-                            .recipient(recipient)
-                            .chatImageId(product.getPreviewImageId())
-                            .productDescription(product.getDescription())
-                            .messages(new ArrayList<>())
-                            .build());
-                });
+                        chatRepository.save(Chat.builder()
+                                .sender(sender)
+                                .recipient(recipient)
+                                .chatImageId(product.getPreviewImageId())
+                                .productDescription(product.getDescription())
+                                .messages(new ArrayList<>())
+                                .build()));
     }
 
     public User getUserByPrincipal(Principal principal) {
@@ -127,12 +117,11 @@ public class ChatService {
                 -> new UsernameNotFoundException("User not found with username: " + principal.getName()));
     }
 
-
-
     public ChatDto getChatByChatId(Integer chatId){
         return chatMapper.fromChat(chatRepository.findById(chatId).orElseThrow(()->
                 new ChatNotFoundException("Chat not found with id: " + chatId)));
     }
+
     @Transactional
     public ChatDto getChat(Principal principal, Integer recipientId) {
        User sender = getUserByPrincipal(principal);
@@ -142,7 +131,6 @@ public class ChatService {
         Chat chat = chatRepository.findByRecipientAndSenderOrSenderAndRecipient(sender,recipient)
                 .orElseThrow(ChatNotFoundException::new);
         return chatMapper.fromChat(chat);
-
     }
 
     @Transactional

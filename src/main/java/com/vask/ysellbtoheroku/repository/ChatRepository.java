@@ -8,9 +8,8 @@ import java.util.List;
 import java.util.Optional;
 @Repository
 public interface ChatRepository extends JpaRepository<Chat,Integer> {
+
     Optional<Chat> findByRecipient(User recipient);
-
-
     @Query("select ch from Chat ch where ch.recipient = ?1 and ch.sender = ?2 or ch.sender = ?1 and ch.recipient = ?2")
     Optional<Chat> findByRecipientAndSenderOrSenderAndRecipient(User sender, User recipient);
 

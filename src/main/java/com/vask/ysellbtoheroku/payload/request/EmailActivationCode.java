@@ -10,9 +10,6 @@ import lombok.NoArgsConstructor;
 public class EmailActivationCode {
     private String value;
 
-
-
-
     public Integer toInt(){
         if (!value.isEmpty()){
             return Integer.parseInt(value);

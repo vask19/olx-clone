@@ -36,10 +36,9 @@ public class ProductService {
     }
 
     @Transactional
-    public List<ProductDto> getAllByUserId(Integer id){
+    public List<ProductDto> getAllByUserId(Integer id) {
         User user = userRepository.findFirstById(id).orElseThrow();
         return mapper.fromProductList(productRepository.findAllByUser(user));
-
     }
 
     @Transactional
@@ -51,18 +50,19 @@ public class ProductService {
                 .collect(Collectors.toList());
         images.forEach(image -> {
             image.setProduct(product);
-            product.getImages().add(image);});
+            product.getImages().add(image);
+        });
         images.get(0).setPreviewImage(true);
         product.setUser(getUserByPrincipal(principal));
         log.info("a new product with photos was saved");
         Product bookFromDb = productRepository.save(product);
         bookFromDb.setPreviewImageId(bookFromDb.getImages().get(0).getId());
         productRepository.save(product);
-        log.info( "a new product with preview photo was saved");
+        log.info("a new product with preview photo was saved");
         return mapper.fromProduct(productRepository.save(product));
     }
 
-    public Image toImageEntity(MultipartFile file){
+    public Image toImageEntity(MultipartFile file) {
         try {
             return Image.builder()
                     .name(file.getName())
@@ -78,9 +78,9 @@ public class ProductService {
     }
 
 
-    public User getUserByPrincipal(CustomUserDetails principal){
+    public User getUserByPrincipal(CustomUserDetails principal) {
         return userRepository.findFirstByUsername(principal.getUser().getUsername())
-                .orElseThrow(() ->  new UsernameNotFoundException("User not found with username: " + principal.getUsername()));
+                .orElseThrow(() -> new UsernameNotFoundException("User not found with username: " + principal.getUsername()));
     }
 
     @Transactional
@@ -88,12 +88,12 @@ public class ProductService {
         Product product = productRepository.findById(id).orElseThrow(() ->
                 new ProductNotFoundException(id));
         return mapper.fromProduct(product);
-
     }
+
     @Transactional
     public ProductDto deleteProduct(Integer id, Principal principal) {
         Product product = productRepository.findById(id).orElseThrow(()
-            -> new ProductNotFoundException(id));
+                -> new ProductNotFoundException(id));
         if (product.getUser().getUsername().equals(principal.getName())) {
             product.getBuckets()
                     .forEach(bucket -> bucket.getProducts().remove(product));
@@ -101,9 +101,8 @@ public class ProductService {
             productRepository.delete(product);
             log.info("a product was deleted");
             return productDto;
+        } else {
+            return new ProductDto();
         }
-        else return new ProductDto();
     }
-
-
 }

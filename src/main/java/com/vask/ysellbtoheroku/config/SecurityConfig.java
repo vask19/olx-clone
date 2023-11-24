@@ -1,11 +1,9 @@
 package com.vask.ysellbtoheroku.config;
-import com.sun.jdi.Method;
-import com.vask.ysellbtoheroku.security.CustomSimpleUrlAuthenticationSuccessHandler;
+import com.vask.ysellbtoheroku.security.UrlAuthenticationSuccessHandler;
 import com.vask.ysellbtoheroku.service.CustomUserDetailsServiceImpl;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
-import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityCustomizer;
 import org.springframework.security.config.annotation.web.configurers.LogoutConfigurer;
@@ -64,7 +62,7 @@ public class SecurityConfig {
 
     @Bean
     public AuthenticationSuccessHandler customAuthenticationSuccessHandler(){
-        return new CustomSimpleUrlAuthenticationSuccessHandler();
+        return new UrlAuthenticationSuccessHandler();
     }
 
 

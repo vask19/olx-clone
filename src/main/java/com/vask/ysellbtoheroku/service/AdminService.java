@@ -19,10 +19,11 @@ public class AdminService {
     private final UserRepository userRepository;
     private final ProductRepository bookRepository;
     private final UserMapper userMapper = UserMapper.MAPPER;
+
     @Transactional
     public UserDto putUsersStatus(Integer id, boolean isActive) {
         User user = userRepository.findFirstById(id).orElseThrow(()
-            -> new UsernameNotFoundException(""));
+                -> new UsernameNotFoundException(""));
         user.setActive(isActive);
         userRepository.save(user);
         log.info("a user was saved");

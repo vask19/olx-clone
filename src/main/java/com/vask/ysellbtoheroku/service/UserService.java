@@ -22,11 +22,10 @@ public class UserService {
     private final UserRepository userRepository;
     private final UserMapper userMapper= Mappers.getMapper(UserMapper.class);
     private final ProductRepository productRepository;
+
     public UserDto getUserByUsername(String username){
         return userMapper.fromUser(userRepository.findFirstByUsername(username).orElse(new User()));
     }
-
-
 
     @Transactional
     public List<UserDto> getAllUsers(){

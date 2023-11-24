@@ -19,9 +19,7 @@ public class AvatarService {
         return avatarRepository.findById(id).orElse(new Avatar());
     }
 
-
-
-    public Image toImageEntity(MultipartFile file){
+    public Image toImageEntity(MultipartFile file) {
         try {
             return Image.builder()
                     .name(file.getName())
